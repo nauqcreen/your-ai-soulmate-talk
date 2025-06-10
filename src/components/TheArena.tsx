@@ -6,16 +6,16 @@ const TheArena = () => {
 
   const contexts = [
     {
-      title: "Buổi Pitching Quyết Định",
-      description: "Bạn có 15 phút để thuyết phục nhà đầu tư. Mọi slide đều hoàn hảo, nhưng liệu giọng nói của bạn có đủ sức nặng để biến những con số thành niềm tin?"
+      title: "Buổi Bảo Vệ & Thuyết Trình",
+      description: "Bạn đứng trước hội đồng, khách hàng, hoặc giảng viên, bảo vệ dự án bạn đã dồn tâm sức hàng tháng trời. Mọi dữ liệu nằm trong tay, mọi ý tưởng nằm trong đầu. Nhưng làm thế nào để biến sự chuẩn bị thầm lặng đó thành một màn trình bày đầy sức nặng, tự tin và không thể bị bắt bẻ?"
     },
     {
-      title: "Cuộc Họp Chiến Lược",
-      description: "Ý tưởng của bạn có thể thay đổi cả dự án, nhưng nó bị lu mờ giữa những ý kiến khác. Làm thế nào để cấu trúc luận điểm và phản xạ tức thì để giành lại sự chú ý?"
+      title: "Phỏng Vấn & Gặp Gỡ",
+      description: "Bạn ngồi đối diện nhà tuyển dụng của công ty mơ ước, hoặc người quản lý trực tiếp của bạn. CV rất ấn tượng, năng lực chuyên môn đã có. Nhưng 30 phút đối thoại trực tiếp mới là bài kiểm tra thực sự. Liệu từng câu trả lời của bạn có thể hiện được hết chiều sâu, sự thông minh và tiềm năng của bạn không?"
     },
     {
-      title: "Buổi Thương Thuyết Căng Thẳng",
-      description: "Đối tác đang do dự. Sự khéo léo trong từng câu chữ, sự tinh tế trong cách đặt câu hỏi sẽ quyết định kết quả của cả thương vụ."
+      title: "Họp Nhóm & Tranh Luận",
+      description: "Trong một buổi họp nhóm, một ý kiến trái chiều đột ngột được đưa ra. Bạn biết mình có lý, nhưng não bộ dường như 'đứng hình' trong vài giây. Khoảnh khắc do dự ngắn ngủi đó đủ để cuộc thảo luận trôi đi, và ý tưởng của bạn bị lướt qua. Làm sao để phản xạ tức thì và bảo vệ quan điểm của mình một cách sắc bén?"
     }
   ];
 
@@ -24,7 +24,7 @@ const TheArena = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold font-lora text-foreground mb-4">
-            Nơi "Khoảng Trống" Xuất Hiện.
+            Những Khoảnh Khắc Quyết Định.
           </h2>
         </div>
         
