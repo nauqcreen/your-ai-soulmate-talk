@@ -15,7 +15,7 @@ const SupportingEcosystem = () => {
     {
       id: 'visi',
       name: 'VNU Innovation & Startup Incubator',
-      description: 'Bệ phóng tăng tốc, kết nối chuyên gia và nhà đầu tư',
+      description: 'Bệ phóng tăng tốc, kết nối mentor, nhà đầu tư',
       logo: '/lovable-uploads/ea1d1318-015b-47b4-95f5-1c39c9d3e0d2.png',
       website: '#'
     },
