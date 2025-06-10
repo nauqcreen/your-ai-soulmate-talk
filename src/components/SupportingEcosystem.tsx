@@ -1,9 +1,11 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { removeBackground, loadImage } from "../utils/backgroundRemoval";
 
 const SupportingEcosystem = () => {
   const [hoveredLogo, setHoveredLogo] = useState<string | null>(null);
+  const [processedLogos, setProcessedLogos] = useState<{[key: string]: string}>({});
 
   const supporters = [
     {
@@ -11,58 +13,101 @@ const SupportingEcosystem = () => {
       name: 'Đại học Quốc gia Hà Nội',
       description: 'Cơ sở giáo dục và nghiên cứu hàng đầu Việt Nam',
       logo: '/lovable-uploads/7eec28a8-a177-401d-86e8-da999f14d0ee.png',
-      website: '#'
+      website: '#',
+      needsBackgroundRemoval: false
     },
     {
       id: 'visi',
       name: 'VISI Innovation Center',
       description: 'Trung tâm đổi mới sáng tạo và khởi nghiệp',
-      logo: '/lovable-uploads/visi-logo.png', // Placeholder - will be updated with actual uploaded logo
-      website: '#'
+      logo: '/lovable-uploads/visi-logo.png',
+      website: '#',
+      needsBackgroundRemoval: false
     },
     {
       id: 'aws',
       name: 'Amazon Web Services',
       description: 'Hỗ trợ nền tảng điện toán đám mây',
-      logo: '/lovable-uploads/aws-logo.png', // Placeholder - will be updated with actual uploaded logo
-      website: '#'
+      logo: '/lovable-uploads/aws-logo.png',
+      website: '#',
+      needsBackgroundRemoval: false
     },
     {
       id: 'perplexity',
       name: 'Perplexity AI',
       description: 'Công nghệ tìm kiếm và trí tuệ nhân tạo',
-      logo: '/lovable-uploads/perplexity-logo.png', // Placeholder - will be updated with actual uploaded logo
-      website: '#'
+      logo: '/lovable-uploads/perplexity-logo.png',
+      website: '#',
+      needsBackgroundRemoval: false
     },
     {
       id: 'twendee',
       name: 'Twendee Labs',
       description: 'Hỗ trợ nghiên cứu và phát triển công nghệ',
-      logo: '/lovable-uploads/twendee-logo.png', // Placeholder - will be updated with actual uploaded logo
-      website: '#'
+      logo: '/lovable-uploads/b83e5b1c-f946-42b6-adfd-e51600eb3a07.png',
+      website: '#',
+      needsBackgroundRemoval: true
     },
     {
       id: 'tiktok',
       name: 'TikTok',
       description: 'Hỗ trợ nền tảng truyền thông xã hội',
-      logo: '/lovable-uploads/tiktok-logo.png', // Placeholder - will be updated with actual uploaded logo
-      website: '#'
+      logo: '/lovable-uploads/tiktok-logo.png',
+      website: '#',
+      needsBackgroundRemoval: false
     },
     {
       id: 'matbao',
       name: 'Mắt Bão',
       description: 'Hỗ trợ dịch vụ công nghệ thông tin',
-      logo: '/lovable-uploads/matbao-logo.png', // Placeholder - will be updated with actual uploaded logo
-      website: '#'
+      logo: '/lovable-uploads/matbao-logo.png',
+      website: '#',
+      needsBackgroundRemoval: false
     },
     {
       id: 'sunwah',
       name: 'Sunwah Innovation Center',
       description: 'Trung tâm đổi mới và phát triển doanh nghiệp',
-      logo: '/lovable-uploads/sunwah-logo.png', // Placeholder - will be updated with actual uploaded logo
-      website: '#'
+      logo: '/lovable-uploads/sunwah-logo.png',
+      website: '#',
+      needsBackgroundRemoval: false
     }
   ];
+
+  useEffect(() => {
+    const processLogos = async () => {
+      for (const supporter of supporters) {
+        if (supporter.needsBackgroundRemoval && !processedLogos[supporter.id]) {
+          try {
+            console.log(`Processing background removal for ${supporter.name}...`);
+            const response = await fetch(supporter.logo);
+            const blob = await response.blob();
+            const imageElement = await loadImage(blob);
+            const processedBlob = await removeBackground(imageElement);
+            const processedUrl = URL.createObjectURL(processedBlob);
+            
+            setProcessedLogos(prev => ({
+              ...prev,
+              [supporter.id]: processedUrl
+            }));
+            
+            console.log(`Background removed for ${supporter.name}`);
+          } catch (error) {
+            console.error(`Failed to process ${supporter.name}:`, error);
+          }
+        }
+      }
+    };
+
+    processLogos();
+  }, []);
+
+  const getLogoUrl = (supporter: any) => {
+    if (supporter.needsBackgroundRemoval && processedLogos[supporter.id]) {
+      return processedLogos[supporter.id];
+    }
+    return supporter.logo;
+  };
 
   return (
     <section className="py-20 md:py-32 bg-[#EAE6DE]/30">
@@ -92,7 +137,7 @@ const SupportingEcosystem = () => {
                     {/* Logo Image */}
                     <div className="relative w-full h-16 md:h-20 overflow-hidden rounded">
                       <img
-                        src={supporter.logo}
+                        src={getLogoUrl(supporter)}
                         alt={supporter.name}
                         className={`w-full h-full object-contain transition-all duration-300 ease-out ${
                           hoveredLogo === supporter.id
