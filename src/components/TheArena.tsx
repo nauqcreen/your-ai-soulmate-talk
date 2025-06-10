@@ -6,16 +6,16 @@ const TheArena = () => {
 
   const contexts = [
     {
-      title: "Buổi Bảo Vệ & Thuyết Trình",
-      description: "Bạn đứng trước hội đồng, khách hàng, hoặc giảng viên, bảo vệ dự án bạn đã dồn tâm sức hàng tháng trời. Mọi dữ liệu nằm trong tay, mọi ý tưởng nằm trong đầu. Nhưng làm thế nào để biến sự chuẩn bị thầm lặng đó thành một màn trình bày đầy sức nặng, tự tin và không thể bị bắt bẻ?"
+      title: "Thuyết Trình & Bảo Vệ",
+      description: "Bạn bảo vệ dự án tâm huyết mà mình đã chuẩn bị hàng tháng trời. Làm thế nào để màn trình diễn cuối cùng xứng tầm với tất cả công sức đó?"
     },
     {
       title: "Phỏng Vấn & Gặp Gỡ",
-      description: "Bạn ngồi đối diện nhà tuyển dụng của công ty mơ ước, hoặc người quản lý trực tiếp của bạn. CV rất ấn tượng, năng lực chuyên môn đã có. Nhưng 30 phút đối thoại trực tiếp mới là bài kiểm tra thực sự. Liệu từng câu trả lời của bạn có thể hiện được hết chiều sâu, sự thông minh và tiềm năng của bạn không?"
+      description: "Năng lực của bạn được thể hiện hoàn hảo trên giấy tờ. Nhưng trong 30 phút đối thoại, làm sao để bộc lộ hết được tiềm năng con người bạn?"
     },
     {
       title: "Họp Nhóm & Tranh Luận",
-      description: "Trong một buổi họp nhóm, một ý kiến trái chiều đột ngột được đưa ra. Bạn biết mình có lý, nhưng não bộ dường như 'đứng hình' trong vài giây. Khoảnh khắc do dự ngắn ngủi đó đủ để cuộc thảo luận trôi đi, và ý tưởng của bạn bị lướt qua. Làm sao để phản xạ tức thì và bảo vệ quan điểm của mình một cách sắc bén?"
+      description: "Một ý kiến trái chiều bất ngờ xuất hiện. Làm thế nào để biến khoảnh khắc não bộ \"đứng hình\" thành một luận điểm phản biện thông minh và tức thì?"
     }
   ];
 
