@@ -25,7 +25,7 @@ const TheArena = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <TextReveal>
-            <h2 className="text-3xl md:text-5xl font-bold font-cormorant text-foreground mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold font-crimson text-foreground mb-4">
               Những Khoảnh Khắc Quyết Định.
             </h2>
           </TextReveal>
@@ -44,7 +44,7 @@ const TheArena = () => {
                     : 'border-transparent bg-background/50 text-muted-foreground hover:border-primary/30'
                 }`}
               >
-                <h3 className="font-cormorant font-semibold text-lg mb-2">
+                <h3 className="font-crimson font-semibold text-lg mb-2">
                   {context.title}
                 </h3>
               </button>
@@ -57,7 +57,7 @@ const TheArena = () => {
               key={activeContext}
               className="animate-cross-fade"
             >
-              <p className="text-lg md:text-xl text-foreground leading-relaxed font-inter">
+              <p className="text-lg md:text-xl text-foreground leading-relaxed font-source">
                 {contexts[activeContext].description}
               </p>
             </div>

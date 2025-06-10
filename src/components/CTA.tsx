@@ -35,11 +35,11 @@ const CTA = () => {
           <div className="relative z-10">
             {!isSubmitted ? (
               <>
-                <h2 className="text-3xl md:text-5xl font-bold font-lora mb-6 text-white">
+                <h2 className="text-3xl md:text-5xl font-bold font-crimson mb-6 text-white">
                   Sẵn sàng để tiếng nói của bạn có trọng lượng tương xứng?
                 </h2>
                 
-                <p className="text-xl mb-8 max-w-2xl mx-auto text-white leading-relaxed">
+                <p className="text-xl mb-8 max-w-2xl mx-auto text-white leading-relaxed font-source">
                   Trở thành người đầu tiên trải nghiệm Tinktalk và nhận lộ trình cá nhân hóa được thiết kế riêng cho tiềm năng của bạn.
                 </p>
                 
@@ -50,14 +50,14 @@ const CTA = () => {
                       placeholder="Nhập email của bạn..."
                       value={email}
                       onChange={handleEmailChange}
-                      className="flex-1 bg-white text-foreground border-0 h-12 text-lg"
+                      className="flex-1 bg-white text-foreground border-0 h-12 text-lg font-source"
                       required
                     />
                     <Button 
                       type="submit"
                       size="lg" 
                       disabled={!isValidEmail}
-                      className={`bg-background text-primary hover:bg-background/90 text-lg px-8 py-3 h-12 whitespace-nowrap transition-all duration-300 ${
+                      className={`bg-background text-primary hover:bg-background/90 text-lg px-8 py-3 h-12 whitespace-nowrap transition-all duration-300 font-source ${
                         isValidEmail ? 'animate-pulse' : ''
                       }`}
                     >
@@ -68,7 +68,7 @@ const CTA = () => {
               </>
             ) : (
               <div className="py-8">
-                <h2 className="text-3xl md:text-4xl font-lora italic text-white leading-relaxed">
+                <h2 className="text-3xl md:text-4xl font-crimson italic text-white leading-relaxed">
                   Cảm ơn bạn. Chúng tôi rất mong chờ được đồng hành cùng bạn.
                 </h2>
               </div>

@@ -24,7 +24,7 @@ const ValuePillars = () => {
     <section className="py-20 md:py-32">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold font-lora text-foreground mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold font-crimson text-foreground mb-4">
             Phương pháp của Tinktalk.
           </h2>
         </div>
@@ -40,11 +40,11 @@ const ValuePillars = () => {
                   <pillar.icon className="text-primary" size={40} strokeWidth={1.5} />
                 </div>
                 
-                <h3 className="text-xl md:text-2xl font-bold font-lora text-foreground mb-4">
+                <h3 className="text-xl md:text-2xl font-bold font-crimson text-foreground mb-4">
                   {pillar.title}
                 </h3>
                 
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed font-source">
                   {pillar.description}
                 </p>
               </div>

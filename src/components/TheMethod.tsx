@@ -59,7 +59,7 @@ const TheMethod = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <TextReveal>
-            <h2 className="text-3xl md:text-5xl font-bold font-cormorant text-foreground mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold font-crimson text-foreground mb-4">
               Mài Sắc Công Cụ Của Bạn.
             </h2>
           </TextReveal>
@@ -82,11 +82,11 @@ const TheMethod = () => {
                   />
                 </div>
                 
-                <h3 className="text-xl md:text-2xl font-bold font-cormorant text-foreground mb-6">
+                <h3 className="text-xl md:text-2xl font-bold font-crimson text-foreground mb-6">
                   {pillar.title}
                 </h3>
                 
-                <p className="text-base md:text-lg text-foreground leading-relaxed font-inter">
+                <p className="text-base md:text-lg text-foreground leading-relaxed font-source">
                   {pillar.description}
                 </p>
               </div>

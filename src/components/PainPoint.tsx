@@ -34,11 +34,11 @@ const PainPoint = () => {
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-8'
         }`}>
-          <h2 className="text-3xl md:text-5xl font-bold font-lora text-foreground mb-8 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold font-crimson text-foreground mb-8 leading-tight">
             Dành cho những "Người Chinh Phục Thầm Lặng".
           </h2>
           
-          <p className="text-lg md:text-xl text-foreground leading-relaxed">
+          <p className="text-lg md:text-xl text-foreground leading-relaxed font-source">
             Có phải bạn sở hữu những ý tưởng tuyệt vời, nhưng luôn cảm thấy lời nói chưa bao giờ đuổi kịp dòng suy nghĩ? Bạn không đơn độc. Đó là khoảng cách mà những người thông minh, cầu tiến thường xuyên đối mặt.
           </p>
         </div>
