@@ -17,49 +17,49 @@ const SupportingEcosystem = () => {
       id: 'visi',
       name: 'VISI Innovation Center',
       description: 'Trung tâm đổi mới sáng tạo và khởi nghiệp',
-      logo: 'https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=200&h=100&fit=crop',
+      logo: '/lovable-uploads/visi-logo.png', // Placeholder - will be updated with actual uploaded logo
       website: '#'
     },
     {
       id: 'aws',
       name: 'Amazon Web Services',
       description: 'Hỗ trợ nền tảng điện toán đám mây',
-      logo: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=200&h=100&fit=crop',
+      logo: '/lovable-uploads/aws-logo.png', // Placeholder - will be updated with actual uploaded logo
       website: '#'
     },
     {
       id: 'perplexity',
       name: 'Perplexity AI',
       description: 'Công nghệ tìm kiếm và trí tuệ nhân tạo',
-      logo: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200&h=100&fit=crop',
+      logo: '/lovable-uploads/perplexity-logo.png', // Placeholder - will be updated with actual uploaded logo
       website: '#'
     },
     {
       id: 'twendee',
       name: 'Twendee Labs',
       description: 'Hỗ trợ nghiên cứu và phát triển công nghệ',
-      logo: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=100&fit=crop',
+      logo: '/lovable-uploads/twendee-logo.png', // Placeholder - will be updated with actual uploaded logo
       website: '#'
     },
     {
       id: 'tiktok',
       name: 'TikTok',
       description: 'Hỗ trợ nền tảng truyền thông xã hội',
-      logo: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=200&h=100&fit=crop',
+      logo: '/lovable-uploads/tiktok-logo.png', // Placeholder - will be updated with actual uploaded logo
       website: '#'
     },
     {
       id: 'matbao',
       name: 'Mắt Bão',
       description: 'Hỗ trợ dịch vụ công nghệ thông tin',
-      logo: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=200&h=100&fit=crop',
+      logo: '/lovable-uploads/matbao-logo.png', // Placeholder - will be updated with actual uploaded logo
       website: '#'
     },
     {
       id: 'sunwah',
       name: 'Sunwah Innovation Center',
       description: 'Trung tâm đổi mới và phát triển doanh nghiệp',
-      logo: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop',
+      logo: '/lovable-uploads/sunwah-logo.png', // Placeholder - will be updated with actual uploaded logo
       website: '#'
     }
   ];
@@ -99,6 +99,11 @@ const SupportingEcosystem = () => {
                             ? 'filter-none transform scale-110'
                             : 'filter grayscale hover:filter-none hover:scale-105'
                         }`}
+                        style={{
+                          imageRendering: 'crisp-edges',
+                          WebkitImageSmoothing: false,
+                          imageSmoothing: false
+                        }}
                       />
                       
                       {/* Subtle overlay for consistency */}
