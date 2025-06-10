@@ -8,11 +8,11 @@ const TheArena = () => {
   const contexts = [
     {
       title: "Thuyết trình & Bảo vệ",
-      description: "Bạn bảo vệ dự án tâm huyết mà mình đã chuẩn bị hàng tháng trời. Làm thế nào để màn trình diễn cuối cùng xứng tầm tất cả công sức đó?"
+      description: "Bảo vệ dự án tâm huyết mà mình đã chuẩn bị hàng tháng trời. Làm thế nào để màn trình diễn cuối cùng xứng tầm tất cả công sức đó?"
     },
     {
       title: "Phỏng vấn & Gặp gỡ",
-      description: "Năng lực của bạn được thể hiện hoàn hảo trên giấy tờ. Nhưng trong 30 phút đối thoại, làm sao để bộc lộ hết được tiềm năng con người bạn?"
+      description: "Năng lực đã được thể hiện hoàn hảo trên giấy tờ. Nhưng trong 30 phút đối thoại, làm sao để bộc lộ hết được tiềm năng con người bạn?"
     },
     {
       title: "Họp nhóm & Tranh luận",

@@ -35,12 +35,12 @@ const TheEmpowerment = () => {
             <>
               <TextReveal className="mb-8">
                 <h2 className="text-3xl md:text-5xl font-bold font-crimson text-foreground leading-tight">
-                  Biến trí tuệ thành tầm ảnh hưởng.
+                  Biến trí tuệ thành tầm ảnh hưởng
                 </h2>
               </TextReveal>
               
               <p className="text-xl mb-12 text-muted-foreground leading-relaxed max-w-3xl mx-auto font-source">
-                Tinktalk không dạy bạn những gì cần nói. Nó giúp bạn giải phóng khả năng nói ra những điều tuyệt vời mà bạn vốn đã biết.
+                Tinktalk không dạy những gì cần nói. Tinktalk giúp bạn giải phóng khả năng nói ra những điều tuyệt vời mà bạn vốn đã biết.
               </p>
               
               <div className="mb-8">
