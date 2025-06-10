@@ -2,9 +2,6 @@
 import Hero from "../components/Hero";
 import PainPoint from "../components/PainPoint";
 import ValuePillars from "../components/ValuePillars";
-import Features from "../components/Features";
-import HowItWorks from "../components/HowItWorks";
-import Testimonials from "../components/Testimonials";
 import CTA from "../components/CTA";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
@@ -16,9 +13,6 @@ const Index = () => {
       <Hero />
       <PainPoint />
       <ValuePillars />
-      <Features />
-      <HowItWorks />
-      <Testimonials />
       <CTA />
       <Footer />
     </div>
