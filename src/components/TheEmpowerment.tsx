@@ -65,7 +65,7 @@ const TheEmpowerment = () => {
                         isValidEmail ? 'shadow-lg' : ''
                       }`}
                     >
-                      Nhận Báo Cáo
+                      Nhận thông tin dự án
                     </MagneticButton>
                   </div>
                 </form>
