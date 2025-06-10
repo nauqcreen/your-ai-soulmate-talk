@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
@@ -17,7 +16,7 @@ const SupportingEcosystem = () => {
       id: 'visi',
       name: 'VISI Innovation Center',
       description: 'Trung tâm đổi mới sáng tạo và khởi nghiệp',
-      logo: '/lovable-uploads/visi-logo.png',
+      logo: '/lovable-uploads/0a337fc5-8f1a-4acd-b1a3-ec5d41b77b37.png',
       website: '#'
     },
     {
