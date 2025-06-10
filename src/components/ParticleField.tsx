@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 
 interface Particle {
@@ -39,9 +38,9 @@ const ParticleField = () => {
           y: Math.random() * canvas.height,
           vx: (Math.random() - 0.5) * 0.5,
           vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 3 + 1.5, // Larger particles
-          opacity: Math.random() * 0.7 + 0.3, // Higher opacity
-          hue: Math.random() * 40 + 10 // Orange to deep orange range
+          size: Math.random() * 2 + 1.2, // Slightly larger than original
+          opacity: Math.random() * 0.4 + 0.2, // Slightly higher opacity
+          hue: Math.random() * 50 + 15 // Orange range, not too saturated
         });
       }
       return particles;
@@ -55,10 +54,10 @@ const ParticleField = () => {
           const distance = Math.sqrt(dx * dx + dy * dy);
           
           if (distance < 120) {
-            const opacity = (120 - distance) / 120 * 0.6;
+            const opacity = (120 - distance) / 120 * 0.4;
             ctx.beginPath();
-            ctx.strokeStyle = `hsla(24, 80%, 40%, ${opacity})`; // Darker orange connections
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = `hsla(30, 60%, 40%, ${opacity})`; // Moderate orange connections
+            ctx.lineWidth = 0.8;
             ctx.moveTo(particles[i].x, particles[j].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
@@ -98,28 +97,16 @@ const ParticleField = () => {
         particle.vx *= 0.99;
         particle.vy *= 0.99;
         
-        // Draw particle core with stronger color
+        // Draw particle core
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${particle.hue}, 85%, 35%, ${particle.opacity})`;
+        ctx.fillStyle = `hsla(${particle.hue}, 60%, 40%, ${particle.opacity})`;
         ctx.fill();
         
-        // Inner bright core
+        // Simple glow effect
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size * 0.5, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${particle.hue}, 90%, 50%, ${particle.opacity * 0.8})`;
-        ctx.fill();
-        
-        // Enhanced glow effect with multiple layers
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${particle.hue}, 70%, 45%, ${particle.opacity * 0.15})`;
-        ctx.fill();
-        
-        // Outer glow
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size * 5, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${particle.hue}, 60%, 50%, ${particle.opacity * 0.05})`;
+        ctx.arc(particle.x, particle.y, particle.size * 2, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${particle.hue}, 50%, 45%, ${particle.opacity * 0.3})`;
         ctx.fill();
       });
       
@@ -152,7 +139,7 @@ const ParticleField = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-[1]"
-      style={{ mixBlendMode: 'multiply' }}
+      style={{ mixBlendMode: 'screen' }}
     />
   );
 };
