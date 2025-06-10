@@ -26,7 +26,7 @@ const TheArena = () => {
         <div className="text-center mb-16">
           <TextReveal>
             <h2 className="text-3xl md:text-5xl font-bold font-crimson text-foreground mb-4">
-              Những khoảnh khắc quyết định.
+              Những khoảnh khắc quyết định
             </h2>
           </TextReveal>
         </div>
