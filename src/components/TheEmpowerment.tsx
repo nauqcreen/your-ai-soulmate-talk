@@ -186,14 +186,14 @@ const TheEmpowerment = () => {
                 </form>
                 
                 <p className="text-sm text-muted-foreground mt-6 max-w-2xl mx-auto leading-relaxed font-source">
-                  Báo cáo được AI phân tích dựa trên một bài tập ngắn do bạn thực hiện, giúp bạn hiểu rõ điểm mạnh và tiềm năng cải thiện của mình.
+                  Báo cáo được AI phân tích dựa trên một bài tập ngắn do bạn thực hiện, giúp bạn hiểu rõ điểm mạnh và tiềm năng cải thiện của mình
                 </p>
               </div>
             </>
           ) : (
             <div className="py-16">
               <h2 className="text-3xl md:text-4xl font-crimson text-foreground leading-relaxed">
-                Cảm ơn bạn. Chúng tôi sẽ liên hệ sớm để gửi thông tin đầu tiên cho bạn.
+                Cảm ơn bạn. Chúng tôi sẽ email sớm để gửi thông tin đầu tiên cho bạn.
               </h2>
             </div>
           )}
