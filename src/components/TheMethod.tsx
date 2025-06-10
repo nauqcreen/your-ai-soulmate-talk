@@ -14,19 +14,19 @@ const TheMethod = () => {
     {
       icon: Brain,
       title: "Tư duy kiến trúc",
-      description: "Xây dựng nền tảng tư duy phản biện, biến ý tưởng thô thành những cấu trúc lập luận không thể bị bẻ gãy.",
+      description: "Xây dựng nền tảng tư duy phản biện, biến ý tưởng thô thành những cấu trúc lập luận không thể bị bẻ gãy",
       color: "from-blue-500/20 to-purple-500/20"
     },
     {
       icon: MessageSquare,
       title: "Biểu đạt chủ đích",
-      description: "Làm chủ ngôn ngữ và phi ngôn ngữ để mọi lời nói đều có mục tiêu, mọi biểu cảm đều có sức nặng.",
+      description: "Làm chủ ngôn ngữ và phi ngôn ngữ để mọi lời nói đều có mục tiêu, mọi biểu cảm đều có sức nặng",
       color: "from-green-500/20 to-blue-500/20"
     },
     {
       icon: Zap,
       title: "Đối thoại bản lĩnh",
-      description: "Rèn luyện phản xạ tức thì và sự linh hoạt trong môi trường áp lực cao để dẫn dắt mọi cuộc hội thoại.",
+      description: "Rèn luyện phản xạ tức thì và sự linh hoạt trong môi trường áp lực cao để dẫn dắt mọi cuộc hội thoại",
       color: "from-orange-500/20 to-red-500/20"
     }
   ];
