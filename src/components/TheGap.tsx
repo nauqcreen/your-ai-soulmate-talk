@@ -13,7 +13,7 @@ const TheGap = () => {
           </TextReveal>
           
           <p className="text-lg md:text-xl text-foreground leading-relaxed font-source">
-            Giữa một ý tưởng xuất sắc trong đầu và một bài trình bày tầm thường trước đám đông là một "khoảng trống". Đó là nơi tiềm năng bị đánh mất, cơ hội bị bỏ lỡ, và giá trị không được công nhận
+            Giữa một ý tưởng xuất sắc trong đầu và bài trình bày tầm thường trước đám đông là một "khoảng trống". Nơi tiềm năng bị đánh mất, cơ hội bị bỏ lỡ, và giá trị không được công nhận
           </p>
         </div>
       </div>
