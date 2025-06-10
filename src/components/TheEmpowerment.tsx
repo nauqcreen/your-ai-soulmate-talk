@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import MagneticButton from './MagneticButton';
 import TextReveal from './TextReveal';
 import { Mail, Send, Check } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const TheEmpowerment = () => {
   const [email, setEmail] = useState("");
@@ -12,8 +14,10 @@ const TheEmpowerment = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [buttonHovered, setButtonHovered] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const typingTimer = useRef<NodeJS.Timeout>();
+  const { toast } = useToast();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,10 +41,48 @@ const TheEmpowerment = () => {
     }, 800);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isValidEmail) {
-      setIsSubmitted(true);
+    if (!isValidEmail || isLoading) return;
+
+    setIsLoading(true);
+    
+    try {
+      const { error } = await supabase
+        .from('email_subscribers')
+        .insert([
+          { 
+            email: email.toLowerCase().trim(),
+            source: 'empowerment-section'
+          }
+        ]);
+
+      if (error) {
+        if (error.code === '23505') { // Duplicate email
+          toast({
+            title: "Email đã được đăng ký",
+            description: "Email này đã có trong danh sách của chúng tôi rồi.",
+            variant: "destructive",
+          });
+        } else {
+          throw error;
+        }
+      } else {
+        setIsSubmitted(true);
+        toast({
+          title: "Đăng ký thành công!",
+          description: "Cảm ơn bạn đã đăng ký nhận thông tin sớm.",
+        });
+      }
+    } catch (error) {
+      console.error('Error saving email:', error);
+      toast({
+        title: "Có lỗi xảy ra",
+        description: "Vui lòng thử lại sau.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -94,6 +136,7 @@ const TheEmpowerment = () => {
                           onChange={handleEmailChange}
                           onFocus={() => setIsFocused(true)}
                           onBlur={() => setIsFocused(false)}
+                          disabled={isLoading}
                           className={`pl-10 pr-10 h-12 text-lg bg-background/80 backdrop-blur-sm border-2 transition-all duration-500 font-source
                             ${isFocused ? 'border-primary shadow-lg shadow-primary/20 bg-background' : 'border-border'}
                             ${isValidEmail ? 'border-green-500 shadow-lg shadow-green-500/20' : ''}
@@ -125,31 +168,33 @@ const TheEmpowerment = () => {
                       
                       <MagneticButton 
                         type="submit"
-                        disabled={!isValidEmail}
+                        disabled={!isValidEmail || isLoading}
                         onMouseEnter={() => setButtonHovered(true)}
                         onMouseLeave={() => setButtonHovered(false)}
                         className={`relative z-10 bg-primary text-primary-foreground text-lg px-8 py-3 h-12 whitespace-nowrap transition-all duration-500 font-source overflow-hidden group/btn
-                          ${isValidEmail ? 'hover:bg-primary/90 hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-primary/30' : 'opacity-50 cursor-not-allowed'}
-                          ${buttonHovered && isValidEmail ? 'animate-pulse' : ''}
+                          ${isValidEmail && !isLoading ? 'hover:bg-primary/90 hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-primary/30' : 'opacity-50 cursor-not-allowed'}
+                          ${buttonHovered && isValidEmail && !isLoading ? 'animate-pulse' : ''}
                         `}
                       >
                         <div className="flex items-center gap-2 relative z-10">
                           <span className="transition-transform duration-300 group-hover/btn:translate-x-1">
-                            Nhận thông tin dự án
+                            {isLoading ? 'Đang gửi...' : 'Nhận thông tin dự án'}
                           </span>
-                          <Send className={`transition-all duration-300 ${
-                            buttonHovered && isValidEmail ? 'translate-x-1 scale-110' : ''
-                          }`} size={16} />
+                          {!isLoading && (
+                            <Send className={`transition-all duration-300 ${
+                              buttonHovered && isValidEmail ? 'translate-x-1 scale-110' : ''
+                            }`} size={16} />
+                          )}
                         </div>
                         
                         {/* Button glow effect */}
                         <div className={`absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000 ${
-                          isValidEmail ? '' : 'hidden'
+                          isValidEmail && !isLoading ? '' : 'hidden'
                         }`}></div>
                         
                         {/* Particle burst effect on hover */}
                         <div className={`absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 ${
-                          isValidEmail ? '' : 'hidden'
+                          isValidEmail && !isLoading ? '' : 'hidden'
                         }`}>
                           {[...Array(6)].map((_, i) => (
                             <div
@@ -170,16 +215,22 @@ const TheEmpowerment = () => {
                   
                   {/* Enhanced status message */}
                   <div className="mt-4 h-6 flex items-center justify-center">
-                    {isValidEmail && (
+                    {isValidEmail && !isLoading && (
                       <div className="flex items-center gap-2 text-green-600 animate-fade-in">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                         <span className="text-sm font-source">Email hợp lệ - sẵn sàng gửi!</span>
                       </div>
                     )}
-                    {email && !isValidEmail && (
+                    {email && !isValidEmail && !isLoading && (
                       <div className="flex items-center gap-2 text-amber-600 animate-fade-in">
                         <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
                         <span className="text-sm font-source">Vui lòng nhập email hợp lệ</span>
+                      </div>
+                    )}
+                    {isLoading && (
+                      <div className="flex items-center gap-2 text-blue-600 animate-fade-in">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
+                        <span className="text-sm font-source">Đang xử lý...</span>
                       </div>
                     )}
                   </div>

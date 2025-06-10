@@ -2,11 +2,15 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const CTA = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -19,10 +23,48 @@ const CTA = () => {
     setIsValidEmail(validateEmail(value));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isValidEmail) {
-      setIsSubmitted(true);
+    if (!isValidEmail || isLoading) return;
+
+    setIsLoading(true);
+    
+    try {
+      const { error } = await supabase
+        .from('email_subscribers')
+        .insert([
+          { 
+            email: email.toLowerCase().trim(),
+            source: 'cta-section'
+          }
+        ]);
+
+      if (error) {
+        if (error.code === '23505') { // Duplicate email
+          toast({
+            title: "Email đã được đăng ký",
+            description: "Email này đã có trong danh sách của chúng tôi rồi.",
+            variant: "destructive",
+          });
+        } else {
+          throw error;
+        }
+      } else {
+        setIsSubmitted(true);
+        toast({
+          title: "Đăng ký thành công!",
+          description: "Cảm ơn bạn đã đăng ký nhận thông tin sớm.",
+        });
+      }
+    } catch (error) {
+      console.error('Error saving email:', error);
+      toast({
+        title: "Có lỗi xảy ra",
+        description: "Vui lòng thử lại sau.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -52,16 +94,17 @@ const CTA = () => {
                       onChange={handleEmailChange}
                       className="flex-1 bg-white text-foreground border-0 h-12 text-lg font-source"
                       required
+                      disabled={isLoading}
                     />
                     <Button 
                       type="submit"
                       size="lg" 
-                      disabled={!isValidEmail}
+                      disabled={!isValidEmail || isLoading}
                       className={`bg-background text-primary hover:bg-background/90 text-lg px-8 py-3 h-12 whitespace-nowrap transition-all duration-300 font-source ${
-                        isValidEmail ? 'animate-pulse' : ''
+                        isValidEmail && !isLoading ? 'animate-pulse' : ''
                       }`}
                     >
-                      Nhận lời mời sớm
+                      {isLoading ? 'Đang gửi...' : 'Nhận lời mời sớm'}
                     </Button>
                   </div>
                 </form>
