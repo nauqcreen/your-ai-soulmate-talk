@@ -38,21 +38,25 @@ const TheArena = () => {
               <button
                 key={index}
                 onClick={() => setActiveContext(index)}
-                className={`flex-1 p-4 text-center border-2 transition-all duration-300 hover-lift ${
+                className={`flex-1 p-6 text-center border-2 rounded-lg transition-all duration-500 transform hover:scale-105 hover:shadow-lg group relative overflow-hidden ${
                   activeContext === index
-                    ? 'border-primary bg-background text-foreground'
-                    : 'border-transparent bg-background/50 text-muted-foreground hover:border-primary/30'
+                    ? 'border-primary bg-background text-foreground shadow-primary/20 shadow-lg scale-105'
+                    : 'border-transparent bg-background/70 text-muted-foreground hover:border-primary/50 hover:bg-background/90'
                 }`}
               >
-                <h3 className="font-crimson font-semibold text-lg mb-2">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <h3 className="font-crimson font-semibold text-lg mb-2 relative z-10 flex items-center justify-center min-h-[3rem]">
                   {context.title}
                 </h3>
+                <div className={`absolute bottom-0 left-0 w-full h-1 bg-primary transition-all duration-300 ${
+                  activeContext === index ? 'opacity-100' : 'opacity-0'
+                }`}></div>
               </button>
             ))}
           </div>
 
           {/* Active Context Content */}
-          <div className="bg-background p-8 md:p-12 border border-border">
+          <div className="bg-background p-8 md:p-12 border border-border rounded-lg shadow-lg">
             <div 
               key={activeContext}
               className="animate-cross-fade"
