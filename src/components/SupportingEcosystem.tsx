@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { ExternalLink, ArrowUpRight } from 'lucide-react';
@@ -215,7 +214,7 @@ const SupportingEcosystem = () => {
           <div className="mt-16 space-y-8">
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-primary font-crimson">8+</div>
+                <div className="text-2xl md:text-3xl font-bold text-primary font-crimson">10+</div>
                 <div className="text-sm text-muted-foreground font-source">Đối tác chiến lược</div>
               </div>
               <div className="hidden md:block w-px h-12 bg-border"></div>
