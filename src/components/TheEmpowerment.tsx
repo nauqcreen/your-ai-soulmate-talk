@@ -236,7 +236,7 @@ const TheEmpowerment = () => {
                 </form>
                 
                 <p className="text-sm text-muted-foreground mt-6 max-w-2xl mx-auto leading-relaxed font-source">
-                  Báo cáo được AI phân tích dựa trên một bài tập ngắn do bạn thực hiện, giúp hiểu rõ điểm mạnh & tiềm năng cải thiện
+                  Báo cáo được AI phân tích dựa trên 1 bài tập ngắn do bạn thực hiện, giúp hiểu rõ điểm mạnh và tiềm năng cải thiện
                 </p>
               </div>
             </>
