@@ -1,4 +1,3 @@
-
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import ParallaxSection from './ParallaxSection';
@@ -79,7 +78,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-5xl relative z-10">
         <ParallaxSection speed={0.2}>
           <div className="relative">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-crimson mb-6 md:mb-8 text-foreground leading-tight relative whitespace-nowrap overflow-hidden">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-crimson mb-6 md:mb-8 text-foreground leading-tight relative">
               <div className="inline-block w-full relative">
                 {mainTitle.split('').map((char, index) => (
                   <span
