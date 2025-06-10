@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
@@ -44,7 +45,7 @@ const SupportingEcosystem = () => {
       id: 'tiktok',
       name: 'TikTok',
       description: 'Hỗ trợ nền tảng truyền thông xã hội',
-      logo: '/lovable-uploads/tiktok-logo.png',
+      logo: '/lovable-uploads/7004f974-606a-4745-80fa-c5f545e96b48.png',
       website: '#'
     },
     {
@@ -96,7 +97,7 @@ const SupportingEcosystem = () => {
                         className={`w-full h-full object-contain transition-all duration-300 ease-out ${
                           hoveredLogo === supporter.id
                             ? 'filter-none transform scale-110'
-                            : 'filter grayscale hover:filter-none hover:scale-105'
+                            : 'filter grayscale transform scale-105 hover:filter-none hover:scale-110'
                         }`}
                       />
                     </div>
