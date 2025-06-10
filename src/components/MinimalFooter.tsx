@@ -5,7 +5,7 @@ const MinimalFooter = () => {
       <div className="container mx-auto px-4">
         <div className="text-center">
           <p className="text-muted-foreground text-sm">
-            © 2025 Tinktalk. A personalized tool for ambitious minds.
+            © 2025 Tinktalk. A personalized companion for ambitious minds.
           </p>
         </div>
       </div>
