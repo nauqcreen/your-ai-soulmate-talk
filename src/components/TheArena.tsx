@@ -37,7 +37,7 @@ const TheArena = () => {
             {contexts.map((context, index) => (
               <button
                 key={index}
-                onClick={() => setActiveContext(index)}
+                onMouseEnter={() => setActiveContext(index)}
                 className={`flex-1 p-6 text-center border-2 rounded-lg transition-all duration-500 transform hover:scale-105 hover:shadow-lg group relative overflow-hidden ${
                   activeContext === index
                     ? 'border-primary bg-background text-foreground shadow-primary/20 shadow-lg scale-105'

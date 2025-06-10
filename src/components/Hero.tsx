@@ -81,7 +81,6 @@ const Hero = () => {
           <div className="relative">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-crimson mb-6 md:mb-8 text-foreground leading-tight relative whitespace-nowrap overflow-hidden">
               <div className="inline-block w-full relative">
-                <div className="absolute inset-0 bg-primary/5 rounded-lg blur-md opacity-30 animate-pulse"></div>
                 {mainTitle.split('').map((char, index) => (
                   <span
                     key={index}
@@ -95,7 +94,6 @@ const Hero = () => {
                   </span>
                 ))}
               </div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 blur-xl opacity-20 animate-glow-pulse"></div>
             </h1>
           </div>
         </ParallaxSection>
