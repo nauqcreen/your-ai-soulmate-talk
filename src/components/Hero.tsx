@@ -79,19 +79,21 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-5xl relative z-10">
         <ParallaxSection speed={0.2}>
           <div className="relative">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold font-crimson mb-6 md:mb-8 text-foreground leading-tight relative">
-              {mainTitle.split('').map((char, index) => (
-                <span
-                  key={index}
-                  className="inline-block animate-char-fade-in-enhanced opacity-0 hover:text-primary transition-all duration-500 hover:scale-110 hover:drop-shadow-glow"
-                  style={{
-                    animationDelay: `${index * 0.05}s`,
-                    animationFillMode: 'forwards'
-                  }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </span>
-              ))}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-crimson mb-6 md:mb-8 text-foreground leading-tight relative whitespace-nowrap overflow-hidden">
+              <div className="inline-block w-full">
+                {mainTitle.split('').map((char, index) => (
+                  <span
+                    key={index}
+                    className="inline-block animate-char-fade-in-enhanced opacity-0 hover:text-primary transition-all duration-500 hover:scale-110 hover:drop-shadow-glow"
+                    style={{
+                      animationDelay: `${index * 0.05}s`,
+                      animationFillMode: 'forwards'
+                    }}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                ))}
+              </div>
               <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 blur-xl opacity-30 animate-glow-pulse"></div>
             </h1>
           </div>
