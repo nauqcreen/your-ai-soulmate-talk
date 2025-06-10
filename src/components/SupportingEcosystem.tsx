@@ -7,7 +7,6 @@ import PartnerStats from './PartnerStats';
 
 const SupportingEcosystem = () => {
   const [hoveredLogo, setHoveredLogo] = useState<string | null>(null);
-  const [clickedLogo, setClickedLogo] = useState<string | null>(null);
 
   const supporters = [
     {
@@ -15,7 +14,6 @@ const SupportingEcosystem = () => {
       name: 'Đại học Quốc gia Hà Nội',
       description: 'Đơn vị bảo trợ & đối tác chiến lược của VISI',
       logo: '/lovable-uploads/7eec28a8-a177-401d-86e8-da999f14d0ee.png',
-      website: 'https://vnu.edu.vn',
       category: 'education'
     },
     {
@@ -23,7 +21,6 @@ const SupportingEcosystem = () => {
       name: 'VNU Innovation & Startup Incubator',
       description: 'Bệ phóng tăng tốc, kết nối mentor, nhà đầu tư',
       logo: '/lovable-uploads/ea1d1318-015b-47b4-95f5-1c39c9d3e0d2.png',
-      website: 'https://visi.vnu.edu.vn',
       category: 'incubator'
     },
     {
@@ -31,7 +28,6 @@ const SupportingEcosystem = () => {
       name: 'Amazon Web Services',
       description: 'Đối tác nền tảng điện toán đám mây toàn cầu',
       logo: '/lovable-uploads/c44380fc-b235-4348-8aec-fef7a3f51411.png',
-      website: 'https://aws.amazon.com',
       category: 'technology'
     },
     {
@@ -39,7 +35,6 @@ const SupportingEcosystem = () => {
       name: 'Perplexity AI',
       description: 'Tăng tốc bởi công nghệ AI thế hệ mới',
       logo: '/lovable-uploads/a67e3b2d-3093-4c93-8dc8-23633791c77d.png',
-      website: 'https://perplexity.ai',
       category: 'ai'
     },
     {
@@ -47,7 +42,6 @@ const SupportingEcosystem = () => {
       name: 'Twendee Labs',
       description: 'Đối tác trong mạng lưới đầu tư Công nghệ',
       logo: '/lovable-uploads/b83e5b1c-f946-42b6-adfd-e51600eb3a07.png',
-      website: 'https://twendee.com',
       category: 'investment'
     },
     {
@@ -55,7 +49,6 @@ const SupportingEcosystem = () => {
       name: 'TikTok',
       description: 'Đối tác tăng tốc truyền thông xã hội',
       logo: '/lovable-uploads/455ba438-b802-43db-8b27-47840eaf3a0f.png',
-      website: 'https://tiktok.com',
       category: 'social'
     },
     {
@@ -63,7 +56,6 @@ const SupportingEcosystem = () => {
       name: 'Mắt Bão',
       description: 'Đối tác Google tại Việt Nam',
       logo: '/lovable-uploads/16f2568c-c350-4c2c-b7bf-904d9f5cb931.png',
-      website: 'https://matbao.net',
       category: 'hosting'
     },
     {
@@ -71,19 +63,9 @@ const SupportingEcosystem = () => {
       name: 'Sunwah Innovation Center',
       description: 'Đối tác không gian & hệ sinh thái đổi mới sáng tạo cho doanh nghiệp',
       logo: '/lovable-uploads/72b4c62a-05f1-45a6-b054-f0c6744ff460.png',
-      website: 'https://sunwah.com',
       category: 'innovation'
     }
   ];
-
-  const handleLogoClick = (supporter: typeof supporters[0]) => {
-    setClickedLogo(supporter.id);
-    setTimeout(() => setClickedLogo(null), 400);
-    
-    if (supporter.website && supporter.website !== '#') {
-      window.open(supporter.website, '_blank', 'noopener,noreferrer');
-    }
-  };
 
   return (
     <TooltipProvider delayDuration={300}>
@@ -107,10 +89,8 @@ const SupportingEcosystem = () => {
                   supporter={supporter}
                   index={index}
                   hoveredLogo={hoveredLogo}
-                  clickedLogo={clickedLogo}
                   onMouseEnter={setHoveredLogo}
                   onMouseLeave={() => setHoveredLogo(null)}
-                  onClick={handleLogoClick}
                 />
               ))}
             </div>
