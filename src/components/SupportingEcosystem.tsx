@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
@@ -31,7 +30,7 @@ const SupportingEcosystem = () => {
       id: 'perplexity',
       name: 'Perplexity AI',
       description: 'Công nghệ tìm kiếm và trí tuệ nhân tạo',
-      logo: '/lovable-uploads/perplexity-logo.png',
+      logo: '/lovable-uploads/a67e3b2d-3093-4c93-8dc8-23633791c77d.png',
       website: '#'
     },
     {
