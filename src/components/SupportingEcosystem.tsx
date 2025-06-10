@@ -100,9 +100,7 @@ const SupportingEcosystem = () => {
                             : 'filter grayscale hover:filter-none hover:scale-105'
                         }`}
                         style={{
-                          imageRendering: 'crisp-edges',
-                          WebkitImageSmoothing: false,
-                          imageSmoothing: false
+                          imageRendering: 'crisp-edges'
                         }}
                       />
                       
