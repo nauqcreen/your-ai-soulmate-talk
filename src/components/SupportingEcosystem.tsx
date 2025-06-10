@@ -44,7 +44,7 @@ const SupportingEcosystem = () => {
       id: 'tiktok',
       name: 'TikTok',
       description: 'Hỗ trợ nền tảng truyền thông xã hội',
-      logo: '/lovable-uploads/1ed052e1-a783-42e0-9e17-8a56e5b0f746.png',
+      logo: '/lovable-uploads/02b04e32-2f28-410a-a32c-f152fefa331b.png',
       website: '#'
     },
     {
@@ -96,7 +96,7 @@ const SupportingEcosystem = () => {
                         className={`w-full h-full object-contain transition-all duration-300 ease-out ${
                           hoveredLogo === supporter.id
                             ? 'filter-none transform scale-110'
-                            : 'filter grayscale transform scale-105 hover:filter-none hover:scale-110'
+                            : 'filter grayscale transform scale-110 hover:filter-none hover:scale-110'
                         }`}
                       />
                     </div>
