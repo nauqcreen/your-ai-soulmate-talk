@@ -1,68 +1,57 @@
 
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowDown } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
+  const [showScrollHint, setShowScrollHint] = useState(false);
+  const mainTitle = "Trí tuệ của bạn xứng đáng có một giọng nói tương xứng.";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setShowScrollHint(true);
+      } else {
+        setShowScrollHint(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="pt-24 pb-12 md:pt-32 md:pb-20">
-      <div className="container mx-auto px-4 text-center">
-        <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6 animate-fade-in">
-          <Sparkles size={16} />
-          <span className="text-sm font-medium">Biến Tư Duy Thành Sức Mạnh Giao Tiếp</span>
-        </div>
-        
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-lora mb-6 text-foreground animate-fade-in">
-          Từ Thông Minh Thầm Lặng
-          <br />
-          Đến Thuyết Phục Tự Tin
+    <section className="min-h-screen flex items-center justify-center relative">
+      <div className="container mx-auto px-4 text-center max-w-4xl">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-lora mb-8 text-foreground leading-tight">
+          {mainTitle.split('').map((char, index) => (
+            <span
+              key={index}
+              className="inline-block animate-fade-in opacity-0"
+              style={{
+                animationDelay: `${index * 0.05}s`,
+                animationFillMode: 'forwards'
+              }}
+            >
+              {char === ' ' ? '\u00A0' : char}
+            </span>
+          ))}
         </h1>
         
-        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in leading-relaxed">
-          Dành cho những người có tư duy sắc bén nhưng vẫn cảm thấy chưa thể hiện hết tiềm năng trong giao tiếp. 
-          Tinktalk giúp bạn xây dựng cầu nối từ ý tưởng đến tác động thực sự.
+        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-fade-in opacity-0" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
+          Tinktalk là người bạn đồng hành AI, giúp bạn biến những suy nghĩ sắc bén thành sức mạnh giao tiếp thuyết phục.
         </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-          <Button 
-            size="lg" 
-            className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-3 hover-scale"
-          >
-            Khám Phá Ngay
-            <ArrowRight className="ml-2" size={20} />
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="text-lg px-8 py-3 hover-scale border-muted-foreground text-foreground hover:bg-muted"
-          >
-            Xem Demo
-          </Button>
-        </div>
-        
-        <div className="mt-12 relative">
-          <div className="bg-primary/5 rounded-2xl p-8 backdrop-blur-sm border border-primary/20">
-            <div className="bg-background rounded-xl p-6 shadow-lg border border-border">
-              <div className="text-left space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-semibold text-sm">AI</span>
-                  </div>
-                  <div className="bg-muted rounded-lg p-3 max-w-sm">
-                    <p className="text-sm text-foreground">Tôi hiểu bạn có nhiều ý tưởng tuyệt vời trong đầu. Hãy cùng tôi biến chúng thành những lời nói thuyết phục và tự tin nhé!</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 justify-end">
-                  <div className="bg-primary text-primary-foreground rounded-lg p-3 max-w-sm">
-                    <p className="text-sm">Giúp tôi chuẩn bị cho buổi thuyết trình quan trọng tuần sau.</p>
-                  </div>
-                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-semibold text-sm">You</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+      
+      {/* Scroll hint arrow */}
+      <div 
+        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${
+          showScrollHint ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+      >
+        <ArrowDown 
+          size={20} 
+          className="text-muted-foreground animate-bounce" 
+        />
       </div>
     </section>
   );
