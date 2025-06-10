@@ -1,7 +1,9 @@
 
 import { useState } from 'react';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { ExternalLink, ArrowUpRight, Sparkles } from 'lucide-react';
+import { TooltipProvider } from "@/components/ui/tooltip";
+import SupportingEcosystemHeader from './SupportingEcosystemHeader';
+import PartnerLogo from './PartnerLogo';
+import PartnerStats from './PartnerStats';
 
 const SupportingEcosystem = () => {
   const [hoveredLogo, setHoveredLogo] = useState<string | null>(null);
@@ -95,151 +97,25 @@ const SupportingEcosystem = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto text-center">
-            {/* Enhanced Section Title */}
-            <div className="mb-8 space-y-4">
-              <div className="inline-flex items-center gap-3 px-6 py-3 bg-primary/10 rounded-full border border-primary/20 mb-6 backdrop-blur-sm">
-                <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-                <span className="text-sm font-medium text-primary">Hệ sinh thái đối tác</span>
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-              </div>
-              
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-crimson text-foreground mb-6 leading-tight animate-fade-in-up-enhanced">
-                Tự hào là một phần của hệ sinh thái{' '}
-                <span className="bg-gradient-to-r from-primary via-orange-500 to-accent bg-clip-text text-transparent animate-gradient-shift">
-                  Vườn ươm VISI
-                </span>{' '}
-              </h2>
-            </div>
-            
-            {/* Enhanced Descriptive Text */}
-            <p className="text-lg md:text-xl text-muted-foreground mb-16 max-w-4xl mx-auto leading-relaxed font-source animate-fade-in-up-enhanced delay-300">
-              Là một dự án được lựa chọn bởi VISI, chúng tôi được tôi luyện về{' '}
-              <span className="text-primary font-medium">công nghệ</span>,{' '}
-              <span className="text-primary font-medium">chuyên môn</span> và{' '}
-              <span className="text-primary font-medium">cơ sở vật chất</span> từ các tổ chức hàng đầu trong nước & quốc tế.
-            </p>
+            <SupportingEcosystemHeader />
 
             {/* Enhanced Logo Grid with Special Interactions */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto mb-16">
               {supporters.map((supporter, index) => (
-                <Tooltip key={supporter.id}>
-                  <TooltipTrigger asChild>
-                    <div
-                      className={`group relative flex items-center justify-center p-4 md:p-6 lg:p-8 rounded-2xl transition-all duration-700 ease-out cursor-pointer overflow-hidden transform-gpu ${
-                        hoveredLogo === supporter.id
-                          ? 'bg-gradient-to-br from-orange-400/20 via-orange-500/15 to-orange-600/10 shadow-2xl shadow-orange-500/25 border-2 border-orange-400/40 -translate-y-3 scale-110 rotate-1'
-                          : 'bg-card/50 border border-border/30 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:-translate-y-2 hover:scale-105'
-                      } ${
-                        clickedLogo === supporter.id ? 'scale-95 rotate-0' : ''
-                      }`}
-                      onMouseEnter={() => setHoveredLogo(supporter.id)}
-                      onMouseLeave={() => setHoveredLogo(null)}
-                      onClick={() => handleLogoClick(supporter)}
-                      style={{
-                        animationDelay: `${index * 100}ms`,
-                        willChange: 'transform, box-shadow, filter'
-                      }}
-                    >
-                      {/* Magical particle effect */}
-                      {hoveredLogo === supporter.id && (
-                        <>
-                          <div className="absolute inset-0 bg-gradient-to-r from-orange-400/20 via-transparent to-orange-500/20 animate-pulse"></div>
-                          <div className="absolute top-2 right-2 w-2 h-2 bg-orange-400 rounded-full animate-ping"></div>
-                          <div className="absolute bottom-2 left-2 w-1 h-1 bg-orange-300 rounded-full animate-bounce delay-150"></div>
-                          <div className="absolute top-1/2 left-2 w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse delay-300"></div>
-                        </>
-                      )}
-                      
-                      {/* Logo Image with enhanced effects */}
-                      <div className="relative w-full h-12 sm:h-16 md:h-20 lg:h-24 overflow-hidden rounded-xl">
-                        <img
-                          src={supporter.logo}
-                          alt={supporter.name}
-                          className={`w-full h-full object-contain transition-all duration-700 ease-out transform-gpu ${
-                            hoveredLogo === supporter.id
-                              ? 'filter-none scale-125 brightness-110 saturate-110'
-                              : 'filter grayscale scale-100 hover:filter-none hover:scale-110'
-                          }`}
-                          loading="lazy"
-                        />
-                      </div>
-
-                      {/* Enhanced glow effect on hover */}
-                      <div className={`absolute inset-0 rounded-2xl transition-all duration-700 ${
-                        hoveredLogo === supporter.id
-                          ? 'bg-gradient-to-br from-orange-400/10 via-transparent to-orange-500/10 shadow-inner'
-                          : ''
-                      }`}></div>
-                      
-                      {/* Click ripple effect */}
-                      {clickedLogo === supporter.id && (
-                        <div className="absolute inset-0 bg-orange-400/30 rounded-2xl animate-ping"></div>
-                      )}
-
-                      {/* Enhanced external link indicator */}
-                      {supporter.website !== '#' && hoveredLogo === supporter.id && (
-                        <div className="absolute top-3 right-3 w-7 h-7 bg-orange-500/90 rounded-full flex items-center justify-center animate-bounce">
-                          <ArrowUpRight className="w-3 h-3 text-white" />
-                        </div>
-                      )}
-
-                      {/* Micro-interaction sparkles */}
-                      {hoveredLogo === supporter.id && (
-                        <>
-                          <div className="absolute top-4 left-1/2 w-1 h-1 bg-orange-400 rounded-full animate-ping delay-100"></div>
-                          <div className="absolute bottom-4 right-1/3 w-0.5 h-0.5 bg-orange-300 rounded-full animate-pulse delay-200"></div>
-                        </>
-                      )}
-                    </div>
-                  </TooltipTrigger>
-                  
-                  <TooltipContent 
-                    className="bg-orange-500/95 text-white px-4 py-2 rounded-lg shadow-xl border border-orange-400/50 backdrop-blur-sm font-medium text-sm"
-                    side="top"
-                    sideOffset={8}
-                  >
-                    Click để đăng nhập website
-                  </TooltipContent>
-                </Tooltip>
+                <PartnerLogo
+                  key={supporter.id}
+                  supporter={supporter}
+                  index={index}
+                  hoveredLogo={hoveredLogo}
+                  clickedLogo={clickedLogo}
+                  onMouseEnter={setHoveredLogo}
+                  onMouseLeave={() => setHoveredLogo(null)}
+                  onClick={handleLogoClick}
+                />
               ))}
             </div>
 
-            {/* Enhanced decorative element with animated stats */}
-            <div className="mt-20 space-y-10">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-16">
-                <div className="text-center group">
-                  <div className="text-3xl md:text-4xl font-bold text-primary font-crimson mb-2 animate-scale-in group-hover:scale-110 transition-transform duration-300">
-                    10+
-                  </div>
-                  <div className="text-sm text-muted-foreground font-source">Đối tác chiến lược</div>
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                
-                <div className="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-border to-transparent"></div>
-                
-                <div className="text-center group">
-                  <div className="text-3xl md:text-4xl font-bold text-primary font-crimson mb-2 animate-scale-in delay-150 group-hover:scale-110 transition-transform duration-300">
-                    5
-                  </div>
-                  <div className="text-sm text-muted-foreground font-source">Lĩnh vực hỗ trợ</div>
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                
-                <div className="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-border to-transparent"></div>
-                
-                <div className="text-center group">
-                  <div className="text-3xl md:text-4xl font-bold text-primary font-crimson mb-2 animate-scale-in delay-300 group-hover:scale-110 transition-transform duration-300">
-                    100%
-                  </div>
-                  <div className="text-sm text-muted-foreground font-source">Cam kết hỗ trợ</div>
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-              </div>
-              
-              <div className="flex justify-center">
-                <div className="w-48 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent animate-pulse"></div>
-              </div>
-            </div>
+            <PartnerStats />
           </div>
         </div>
       </section>
