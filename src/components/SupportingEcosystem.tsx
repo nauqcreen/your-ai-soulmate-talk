@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
@@ -23,7 +24,7 @@ const SupportingEcosystem = () => {
       id: 'aws',
       name: 'Amazon Web Services',
       description: 'Hỗ trợ nền tảng điện toán đám mây',
-      logo: '/lovable-uploads/aws-logo.png',
+      logo: '/lovable-uploads/c44380fc-b235-4348-8aec-fef7a3f51411.png',
       website: '#'
     },
     {
