@@ -8,56 +8,56 @@ const SupportingEcosystem = () => {
     {
       id: 'vnu',
       name: 'Đại học Quốc gia Hà Nội',
-      description: 'Cơ sở giáo dục và nghiên cứu hàng đầu Việt Nam',
+      description: 'Đơn vị bảo trợ & đối tác chiến lược của VISI',
       logo: '/lovable-uploads/7eec28a8-a177-401d-86e8-da999f14d0ee.png',
       website: '#'
     },
     {
       id: 'visi',
-      name: 'VISI Innovation Center',
-      description: 'Trung tâm đổi mới sáng tạo và khởi nghiệp',
+      name: 'VNU Innovation & Startup Incubator',
+      description: 'Bệ phóng tăng tốc, kết nối chuyên gia và nhà đầu tư',
       logo: '/lovable-uploads/ea1d1318-015b-47b4-95f5-1c39c9d3e0d2.png',
       website: '#'
     },
     {
       id: 'aws',
       name: 'Amazon Web Services',
-      description: 'Hỗ trợ nền tảng điện toán đám mây',
+      description: 'Đối tác nền tảng điện toán đám mây toàn cầu',
       logo: '/lovable-uploads/c44380fc-b235-4348-8aec-fef7a3f51411.png',
       website: '#'
     },
     {
       id: 'perplexity',
       name: 'Perplexity AI',
-      description: 'Công nghệ tìm kiếm và trí tuệ nhân tạo',
+      description: 'Tăng tốc bởi công nghệ AI thế hệ mới',
       logo: '/lovable-uploads/a67e3b2d-3093-4c93-8dc8-23633791c77d.png',
       website: '#'
     },
     {
       id: 'twendee',
       name: 'Twendee Labs',
-      description: 'Hỗ trợ nghiên cứu và phát triển công nghệ',
+      description: 'Đối tác trong mạng lưới đầu tư Công nghệ',
       logo: '/lovable-uploads/b83e5b1c-f946-42b6-adfd-e51600eb3a07.png',
       website: '#'
     },
     {
       id: 'tiktok',
       name: 'TikTok',
-      description: 'Hỗ trợ nền tảng truyền thông xã hội',
+      description: 'Đối tác tăng tốc truyền thông xã hội',
       logo: '/lovable-uploads/455ba438-b802-43db-8b27-47840eaf3a0f.png',
       website: '#'
     },
     {
       id: 'matbao',
       name: 'Mắt Bão',
-      description: 'Hỗ trợ dịch vụ công nghệ thông tin',
+      description: 'Đối tác cung cấp tên miền & nền tảng làm việc Google Workspace',
       logo: '/lovable-uploads/16f2568c-c350-4c2c-b7bf-904d9f5cb931.png',
       website: '#'
     },
     {
       id: 'sunwah',
       name: 'Sunwah Innovation Center',
-      description: 'Trung tâm đổi mới và phát triển doanh nghiệp',
+      description: 'Đối tác không gian & hệ sinh thái đổi mới sáng tạo',
       logo: '/lovable-uploads/72b4c62a-05f1-45a6-b054-f0c6744ff460.png',
       website: '#'
     }
