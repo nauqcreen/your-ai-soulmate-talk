@@ -9,48 +9,6 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      demo_bookings: {
-        Row: {
-          center_name: string
-          created_at: string
-          email: string
-          full_name: string
-          id: string
-          message: string | null
-          phone: string
-          preferred_date: string | null
-          preferred_time: string | null
-          status: string | null
-          updated_at: string
-        }
-        Insert: {
-          center_name: string
-          created_at?: string
-          email: string
-          full_name: string
-          id?: string
-          message?: string | null
-          phone: string
-          preferred_date?: string | null
-          preferred_time?: string | null
-          status?: string | null
-          updated_at?: string
-        }
-        Update: {
-          center_name?: string
-          created_at?: string
-          email?: string
-          full_name?: string
-          id?: string
-          message?: string | null
-          phone?: string
-          preferred_date?: string | null
-          preferred_time?: string | null
-          status?: string | null
-          updated_at?: string
-        }
-        Relationships: []
-      }
       email_subscribers: {
         Row: {
           email: string
@@ -72,36 +30,6 @@ export type Database = {
           source?: string | null
           status?: string
           subscribed_at?: string
-        }
-        Relationships: []
-      }
-      profiles: {
-        Row: {
-          center_name: string | null
-          created_at: string
-          full_name: string | null
-          id: string
-          phone: string | null
-          updated_at: string
-          user_id: string | null
-        }
-        Insert: {
-          center_name?: string | null
-          created_at?: string
-          full_name?: string | null
-          id?: string
-          phone?: string | null
-          updated_at?: string
-          user_id?: string | null
-        }
-        Update: {
-          center_name?: string | null
-          created_at?: string
-          full_name?: string | null
-          id?: string
-          phone?: string | null
-          updated_at?: string
-          user_id?: string | null
         }
         Relationships: []
       }

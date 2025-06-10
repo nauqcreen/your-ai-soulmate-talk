@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -42,9 +41,9 @@ const CTA = () => {
       if (error) {
         if (error.code === '23505') { // Duplicate email
           toast({
-            title: "Email đã được đăng ký",
-            description: "Email này đã có trong danh sách của chúng tôi rồi.",
-            variant: "destructive",
+            title: "Chúng tôi đã ghi nhận email này",
+            description: "Bạn sẽ nhận được thông tin ngay khi Tinktalk ra mắt.",
+            variant: "default",
           });
         } else {
           throw error;
@@ -52,15 +51,15 @@ const CTA = () => {
       } else {
         setIsSubmitted(true);
         toast({
-          title: "Đăng ký thành công!",
-          description: "Cảm ơn bạn đã đăng ký nhận thông tin sớm.",
+          title: "Chào mừng bạn đến với cộng đồng Tinktalk",
+          description: "Chúng tôi sẽ gửi thông tin độc quyền cho bạn sớm nhất.",
         });
       }
     } catch (error) {
       console.error('Error saving email:', error);
       toast({
-        title: "Có lỗi xảy ra",
-        description: "Vui lòng thử lại sau.",
+        title: "Không thể hoàn tất đăng ký",
+        description: "Xin lỗi vì sự bất tiện. Vui lòng thử lại sau ít phút.",
         variant: "destructive",
       });
     } finally {
@@ -104,7 +103,7 @@ const CTA = () => {
                         isValidEmail && !isLoading ? 'animate-pulse' : ''
                       }`}
                     >
-                      {isLoading ? 'Đang gửi...' : 'Nhận lời mời sớm'}
+                      {isLoading ? 'Đang xử lý...' : 'Nhận lời mời sớm'}
                     </Button>
                   </div>
                 </form>

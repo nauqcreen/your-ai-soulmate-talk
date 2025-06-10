@@ -1,4 +1,3 @@
-
 import { Input } from "@/components/ui/input";
 import { useState, useRef, useEffect } from "react";
 import MagneticButton from './MagneticButton';
@@ -60,9 +59,9 @@ const TheEmpowerment = () => {
       if (error) {
         if (error.code === '23505') { // Duplicate email
           toast({
-            title: "Email đã được đăng ký",
-            description: "Email này đã có trong danh sách của chúng tôi rồi.",
-            variant: "destructive",
+            title: "Chúng tôi đã ghi nhận email này",
+            description: "Bạn sẽ nhận được thông tin ngay khi Tinktalk ra mắt.",
+            variant: "default",
           });
         } else {
           throw error;
@@ -70,15 +69,15 @@ const TheEmpowerment = () => {
       } else {
         setIsSubmitted(true);
         toast({
-          title: "Đăng ký thành công!",
-          description: "Cảm ơn bạn đã đăng ký nhận thông tin sớm.",
+          title: "Chào mừng bạn đến với cộng đồng Tinktalk",
+          description: "Chúng tôi sẽ gửi thông tin độc quyền cho bạn sớm nhất.",
         });
       }
     } catch (error) {
       console.error('Error saving email:', error);
       toast({
-        title: "Có lỗi xảy ra",
-        description: "Vui lòng thử lại sau.",
+        title: "Không thể hoàn tất đăng ký",
+        description: "Xin lỗi vì sự bất tiện. Vui lòng thử lại sau ít phút.",
         variant: "destructive",
       });
     } finally {
@@ -178,7 +177,7 @@ const TheEmpowerment = () => {
                       >
                         <div className="flex items-center gap-2 relative z-10">
                           <span className="transition-transform duration-300 group-hover/btn:translate-x-1">
-                            {isLoading ? 'Đang gửi...' : 'Nhận thông tin dự án'}
+                            {isLoading ? 'Đang xử lý...' : 'Nhận thông tin dự án'}
                           </span>
                           {!isLoading && (
                             <Send className={`transition-all duration-300 ${
