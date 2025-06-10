@@ -44,7 +44,7 @@ const Hero = () => {
         </h1>
         
         <p 
-          className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in-up opacity-0 font-satoshi" 
+          className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in-up opacity-0 font-inter" 
           style={{ animationDelay: '1.5s', animationFillMode: 'forwards' }}
         >
           {subtitle}
@@ -53,7 +53,7 @@ const Hero = () => {
       
       {/* Scroll hint chevron */}
       <div 
-        className={`absolute bottom-12 left-1/2 transform -translate-x-1/2 transition-all duration-500 hover-cursor ${
+        className={`absolute bottom-12 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${
           showScrollHint ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
       >

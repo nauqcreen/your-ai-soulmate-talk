@@ -12,7 +12,7 @@ const TheGap = () => {
             </h2>
           </TextReveal>
           
-          <p className="text-lg md:text-xl text-foreground leading-relaxed font-satoshi">
+          <p className="text-lg md:text-xl text-foreground leading-relaxed font-inter">
             Giữa một ý tưởng xuất sắc trong đầu bạn và một bài trình bày tầm thường trước đám đông là một "khoảng trống". Đó là nơi tiềm năng bị đánh mất, cơ hội bị bỏ lỡ, và giá trị không được công nhận. Đây là chi phí vô hình lớn nhất trong sự nghiệp của mỗi chuyên gia.
           </p>
         </div>

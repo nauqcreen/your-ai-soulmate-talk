@@ -21,7 +21,7 @@ export default {
 		extend: {
 			fontFamily: {
 				'cormorant': ['Cormorant Garamond', 'serif'],
-				'satoshi': ['Satoshi', 'sans-serif'],
+				'inter': ['Inter', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

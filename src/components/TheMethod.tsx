@@ -69,7 +69,7 @@ const TheMethod = () => {
           {pillars.map((pillar, index) => (
             <div 
               key={index} 
-              className="group p-8 border-2 border-transparent transition-all duration-300 ease-out hover:border-primary hover-lift hover-cursor"
+              className="group p-8 border-2 border-transparent transition-all duration-300 ease-out hover:border-primary hover-lift"
             >
               <div className="text-center">
                 <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
@@ -86,7 +86,7 @@ const TheMethod = () => {
                   {pillar.title}
                 </h3>
                 
-                <p className="text-base md:text-lg text-foreground leading-relaxed font-satoshi">
+                <p className="text-base md:text-lg text-foreground leading-relaxed font-inter">
                   {pillar.description}
                 </p>
               </div>

@@ -5,7 +5,7 @@
 
 /* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
@@ -93,11 +93,10 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: none; /* Hide default cursor for custom cursor */
   }
 
   body {
-    @apply bg-background text-foreground font-satoshi;
+    @apply bg-background text-foreground font-inter;
     font-size: 18px;
     line-height: 28px; /* 28px = 7 * 4px baseline */
   }
@@ -116,27 +115,6 @@
   /* Smooth transitions for intentional and responsive motion */
   * {
     transition: all 250ms ease-in-out;
-  }
-
-  /* Custom cursor styles */
-  #custom-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    background: rgba(184, 115, 51, 0.3);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: all 0.15s ease-out;
-  }
-
-  #custom-cursor.hover {
-    width: 40px;
-    height: 40px;
-    background: rgba(184, 115, 51, 0.1);
-    border: 2px solid rgba(184, 115, 51, 0.6);
   }
 
   /* Scroll progress bar */

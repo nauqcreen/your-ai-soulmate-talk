@@ -39,7 +39,7 @@ const TheEmpowerment = () => {
                 </h2>
               </TextReveal>
               
-              <p className="text-xl mb-12 text-muted-foreground leading-relaxed max-w-3xl mx-auto font-satoshi">
+              <p className="text-xl mb-12 text-muted-foreground leading-relaxed max-w-3xl mx-auto font-inter">
                 Tinktalk không dạy bạn những gì cần nói. Nó giúp bạn giải phóng khả năng nói ra những điều tuyệt vời mà bạn vốn đã biết.
               </p>
               
@@ -55,13 +55,13 @@ const TheEmpowerment = () => {
                       placeholder="Nhập email của bạn..."
                       value={email}
                       onChange={handleEmailChange}
-                      className="flex-1 bg-background text-foreground border-border h-12 text-lg focus:ring-primary hover-cursor font-satoshi"
+                      className="flex-1 bg-background text-foreground border-border h-12 text-lg focus:ring-primary font-inter"
                       required
                     />
                     <MagneticButton 
                       type="submit"
                       disabled={!isValidEmail}
-                      className={`bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-3 h-12 whitespace-nowrap transition-all duration-300 hover-lift font-satoshi ${
+                      className={`bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-3 h-12 whitespace-nowrap transition-all duration-300 hover-lift font-inter ${
                         isValidEmail ? 'shadow-lg' : ''
                       }`}
                     >
@@ -70,7 +70,7 @@ const TheEmpowerment = () => {
                   </div>
                 </form>
                 
-                <p className="text-sm text-muted-foreground mt-4 max-w-2xl mx-auto leading-relaxed font-satoshi">
+                <p className="text-sm text-muted-foreground mt-4 max-w-2xl mx-auto leading-relaxed font-inter">
                   Báo cáo được AI phân tích dựa trên một bài tập ngắn do bạn thực hiện, giúp bạn hiểu rõ điểm mạnh và tiềm năng cải thiện của mình.
                 </p>
               </div>
