@@ -115,11 +115,10 @@ const SupportingEcosystem = () => {
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-crimson text-foreground mb-6 leading-tight">
-              Tự hào một phần của{' '}
+              Tự hào là một phần của{' '}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Vườn ươm VISI
+                hệ sinh thái Vườn ươm VISI
               </span>{' '}
-              và hệ sinh thái hỗ trợ
             </h2>
           </div>
           
