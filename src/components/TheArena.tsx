@@ -38,7 +38,7 @@ const TheArena = () => {
               <button
                 key={index}
                 onClick={() => setActiveContext(index)}
-                className={`flex-1 p-4 text-left border-2 transition-all duration-300 hover-lift ${
+                className={`flex-1 p-4 text-center border-2 transition-all duration-300 hover-lift ${
                   activeContext === index
                     ? 'border-primary bg-background text-foreground'
                     : 'border-transparent bg-background/50 text-muted-foreground hover:border-primary/30'

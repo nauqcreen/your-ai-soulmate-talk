@@ -80,11 +80,12 @@ const Hero = () => {
         <ParallaxSection speed={0.2}>
           <div className="relative">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold font-crimson mb-6 md:mb-8 text-foreground leading-tight relative whitespace-nowrap overflow-hidden">
-              <div className="inline-block w-full">
+              <div className="inline-block w-full relative">
+                <div className="absolute inset-0 bg-primary/10 rounded-lg blur-sm opacity-50 animate-pulse"></div>
                 {mainTitle.split('').map((char, index) => (
                   <span
                     key={index}
-                    className="inline-block animate-char-fade-in-enhanced opacity-0 hover:text-primary transition-all duration-500 hover:scale-110 hover:drop-shadow-glow"
+                    className="inline-block animate-char-fade-in-enhanced opacity-0 hover:text-primary transition-all duration-500 hover:scale-110 hover:drop-shadow-glow relative z-10"
                     style={{
                       animationDelay: `${index * 0.05}s`,
                       animationFillMode: 'forwards'
