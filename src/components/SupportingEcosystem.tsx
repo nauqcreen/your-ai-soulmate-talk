@@ -16,7 +16,7 @@ const SupportingEcosystem = () => {
       id: 'visi',
       name: 'VISI Innovation Center',
       description: 'Trung tâm đổi mới sáng tạo và khởi nghiệp',
-      logo: '/lovable-uploads/0a337fc5-8f1a-4acd-b1a3-ec5d41b77b37.png',
+      logo: '/lovable-uploads/ea1d1318-015b-47b4-95f5-1c39c9d3e0d2.png',
       website: '#'
     },
     {
