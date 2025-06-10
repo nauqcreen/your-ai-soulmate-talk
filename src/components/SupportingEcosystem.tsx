@@ -159,7 +159,7 @@ const SupportingEcosystem = () => {
                         className={`w-full h-full object-contain transition-all duration-500 ease-out ${
                           hoveredLogo === supporter.id
                             ? 'filter-none transform scale-110 brightness-110'
-                            : 'filter grayscale-[50%] transform scale-100 hover:filter-none hover:scale-105'
+                            : 'filter grayscale transform scale-100 hover:filter-none hover:scale-105'
                         }`}
                         loading="lazy"
                       />
