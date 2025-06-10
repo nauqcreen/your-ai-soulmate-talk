@@ -1,13 +1,19 @@
 
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import MagneticButton from './MagneticButton';
 import TextReveal from './TextReveal';
+import { Mail, Send, Check } from "lucide-react";
 
 const TheEmpowerment = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [buttonHovered, setButtonHovered] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const typingTimer = useRef<NodeJS.Timeout>();
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -18,6 +24,17 @@ const TheEmpowerment = () => {
     const value = e.target.value;
     setEmail(value);
     setIsValidEmail(validateEmail(value));
+    setIsTyping(true);
+    
+    // Clear existing timer
+    if (typingTimer.current) {
+      clearTimeout(typingTimer.current);
+    }
+    
+    // Set new timer
+    typingTimer.current = setTimeout(() => {
+      setIsTyping(false);
+    }, 800);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -26,6 +43,14 @@ const TheEmpowerment = () => {
       setIsSubmitted(true);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      if (typingTimer.current) {
+        clearTimeout(typingTimer.current);
+      }
+    };
+  }, []);
 
   return (
     <section className="py-20 md:py-32">
@@ -50,27 +75,117 @@ const TheEmpowerment = () => {
                 
                 <form onSubmit={handleSubmit} className="max-w-md mx-auto">
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Input
-                      type="email"
-                      placeholder="Nhập email của bạn..."
-                      value={email}
-                      onChange={handleEmailChange}
-                      className="flex-1 bg-background text-foreground border-border h-12 text-lg focus:ring-primary font-source"
-                      required
-                    />
-                    <MagneticButton 
-                      type="submit"
-                      disabled={!isValidEmail}
-                      className={`bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-3 h-12 whitespace-nowrap transition-all duration-300 hover-lift font-source ${
-                        isValidEmail ? 'shadow-lg' : ''
-                      }`}
-                    >
-                      Nhận thông tin dự án
-                    </MagneticButton>
+                    {/* Enhanced Email Input */}
+                    <div className="flex-1 relative group">
+                      <div className={`absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-lg opacity-0 transition-all duration-700 ${
+                        isFocused || isValidEmail ? 'opacity-100 scale-110' : ''
+                      }`}></div>
+                      
+                      <div className="relative">
+                        <Mail className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
+                          isFocused ? 'text-primary scale-110' : 'text-muted-foreground'
+                        } ${isTyping ? 'animate-pulse' : ''}`} size={18} />
+                        
+                        <Input
+                          ref={inputRef}
+                          type="email"
+                          placeholder="Nhập email của bạn..."
+                          value={email}
+                          onChange={handleEmailChange}
+                          onFocus={() => setIsFocused(true)}
+                          onBlur={() => setIsFocused(false)}
+                          className={`pl-10 pr-10 h-12 text-lg bg-background/80 backdrop-blur-sm border-2 transition-all duration-500 font-source
+                            ${isFocused ? 'border-primary shadow-lg shadow-primary/20 bg-background' : 'border-border'}
+                            ${isValidEmail ? 'border-green-500 shadow-lg shadow-green-500/20' : ''}
+                            hover:border-primary/50 hover:shadow-md group-hover:scale-[1.02]
+                          `}
+                          required
+                        />
+                        
+                        <div className={`absolute right-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
+                          isValidEmail ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                        }`}>
+                          <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                            <Check size={12} className="text-white" />
+                          </div>
+                        </div>
+                        
+                        {/* Typing indicator */}
+                        <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${
+                          isTyping ? 'w-full opacity-100' : 'w-0 opacity-0'
+                        }`}></div>
+                      </div>
+                    </div>
+
+                    {/* Enhanced Submit Button */}
+                    <div className="relative group">
+                      <div className={`absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary rounded-lg blur-lg opacity-0 transition-all duration-700 ${
+                        buttonHovered || isValidEmail ? 'opacity-60 scale-110' : ''
+                      }`}></div>
+                      
+                      <MagneticButton 
+                        type="submit"
+                        disabled={!isValidEmail}
+                        onMouseEnter={() => setButtonHovered(true)}
+                        onMouseLeave={() => setButtonHovered(false)}
+                        className={`relative z-10 bg-primary text-primary-foreground text-lg px-8 py-3 h-12 whitespace-nowrap transition-all duration-500 font-source overflow-hidden group/btn
+                          ${isValidEmail ? 'hover:bg-primary/90 hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-primary/30' : 'opacity-50 cursor-not-allowed'}
+                          ${buttonHovered && isValidEmail ? 'animate-pulse' : ''}
+                        `}
+                      >
+                        <div className="flex items-center gap-2 relative z-10">
+                          <span className="transition-transform duration-300 group-hover/btn:translate-x-1">
+                            Nhận thông tin dự án
+                          </span>
+                          <Send className={`transition-all duration-300 ${
+                            buttonHovered && isValidEmail ? 'translate-x-1 scale-110' : ''
+                          }`} size={16} />
+                        </div>
+                        
+                        {/* Button glow effect */}
+                        <div className={`absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000 ${
+                          isValidEmail ? '' : 'hidden'
+                        }`}></div>
+                        
+                        {/* Particle burst effect on hover */}
+                        <div className={`absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 ${
+                          isValidEmail ? '' : 'hidden'
+                        }`}>
+                          {[...Array(6)].map((_, i) => (
+                            <div
+                              key={i}
+                              className="absolute w-1 h-1 bg-white/60 rounded-full animate-ping"
+                              style={{
+                                left: `${20 + i * 10}%`,
+                                top: `${30 + (i % 2) * 40}%`,
+                                animationDelay: `${i * 0.1}s`,
+                                animationDuration: '1s'
+                              }}
+                            ></div>
+                          ))}
+                        </div>
+                      </MagneticButton>
+                    </div>
+                  </div>
+                  
+                  {/* Enhanced status message */}
+                  <div className="mt-4 h-6 flex items-center justify-center">
+                    {isValidEmail && (
+                      <div className="flex items-center gap-2 text-green-600 animate-fade-in">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-sm font-source">Email hợp lệ - sẵn sàng gửi!</span>
+                      </div>
+                    )}
+                    {email && !isValidEmail && (
+                      <div className="flex items-center gap-2 text-amber-600 animate-fade-in">
+                        <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+                        <span className="text-sm font-source">Vui lòng nhập email hợp lệ</span>
+                      </div>
+                    )}
                   </div>
                 </form>
                 
-                <p className="text-sm text-muted-foreground mt-4 max-w-2xl mx-auto leading-relaxed font-source">
+                <p className="text-sm text-muted-foreground mt-6 max-w-2xl mx-auto leading-relaxed font-source">
                   Báo cáo được AI phân tích dựa trên một bài tập ngắn do bạn thực hiện, giúp bạn hiểu rõ điểm mạnh và tiềm năng cải thiện của mình.
                 </p>
               </div>
