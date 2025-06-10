@@ -68,7 +68,7 @@ const TheMethod = () => {
           <ScrollTriggerAnimation animation="fadeInUp" delay={200}>
             <TextReveal>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-crimson text-foreground mb-4 leading-tight">
-                Mài sắc công cụ Của bạn
+                Mài sắc bộ công cụ giao tiếp
               </h2>
             </TextReveal>
           </ScrollTriggerAnimation>
