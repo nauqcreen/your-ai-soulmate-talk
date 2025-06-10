@@ -58,7 +58,7 @@ const SupportingEcosystem = () => {
       id: 'sunwah',
       name: 'Sunwah Innovation Center',
       description: 'Trung tâm đổi mới và phát triển doanh nghiệp',
-      logo: '/lovable-uploads/sunwah-logo.png',
+      logo: '/lovable-uploads/72b4c62a-05f1-45a6-b054-f0c6744ff460.png',
       website: '#'
     }
   ];
