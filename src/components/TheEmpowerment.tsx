@@ -1,3 +1,4 @@
+
 import { Input } from "@/components/ui/input";
 import { useState, useRef, useEffect } from "react";
 import MagneticButton from './MagneticButton';
@@ -114,7 +115,7 @@ const TheEmpowerment = () => {
                   Đăng ký nhận thông tin sớm, truy cập sớm, và nhận báo cáo năng lực đầu tiên
                 </h3>
                 
-                <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+                <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
                   <div className="flex flex-col sm:flex-row gap-4">
                     {/* Enhanced Email Input */}
                     <div className="flex-1 relative group">
