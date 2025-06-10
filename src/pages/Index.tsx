@@ -1,20 +1,22 @@
 
 import Hero from "../components/Hero";
-import PainPoint from "../components/PainPoint";
-import ValuePillars from "../components/ValuePillars";
-import CTA from "../components/CTA";
+import TheGap from "../components/TheGap";
+import TheArena from "../components/TheArena";
+import TheMethod from "../components/TheMethod";
+import TheEmpowerment from "../components/TheEmpowerment";
 import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
+import MinimalFooter from "../components/MinimalFooter";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <PainPoint />
-      <ValuePillars />
-      <CTA />
-      <Footer />
+      <TheGap />
+      <TheArena />
+      <TheMethod />
+      <TheEmpowerment />
+      <MinimalFooter />
     </div>
   );
 };

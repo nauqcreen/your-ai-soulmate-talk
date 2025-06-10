@@ -1,22 +1,28 @@
 
-import { ArrowDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [showScrollHint, setShowScrollHint] = useState(false);
-  const mainTitle = "Trí tuệ của bạn xứng đáng có một giọng nói tương xứng.";
+  const mainTitle = "Ý Tưởng Của Bạn Thực Sự Trị Giá Bao Nhiêu?";
+  const subtitle = "Khi nó được trình bày một cách thuyết phục.";
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowScrollHint(true);
+    }, 3000); // Show scroll hint after 3 seconds
+
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setShowScrollHint(true);
-      } else {
+      if (window.scrollY > 100) {
         setShowScrollHint(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -26,9 +32,9 @@ const Hero = () => {
           {mainTitle.split('').map((char, index) => (
             <span
               key={index}
-              className="inline-block animate-fade-in opacity-0"
+              className="inline-block animate-char-fade-in opacity-0"
               style={{
-                animationDelay: `${index * 0.05}s`,
+                animationDelay: `${index * 0.03}s`,
                 animationFillMode: 'forwards'
               }}
             >
@@ -37,20 +43,23 @@ const Hero = () => {
           ))}
         </h1>
         
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-fade-in opacity-0" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
-          Tinktalk là người bạn đồng hành AI, giúp bạn biến những suy nghĩ sắc bén thành sức mạnh giao tiếp thuyết phục.
+        <p 
+          className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in-up opacity-0" 
+          style={{ animationDelay: '1.5s', animationFillMode: 'forwards' }}
+        >
+          {subtitle}
         </p>
       </div>
       
-      {/* Scroll hint arrow */}
+      {/* Scroll hint chevron */}
       <div 
-        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${
+        className={`absolute bottom-12 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${
           showScrollHint ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
       >
-        <ArrowDown 
+        <ChevronDown 
           size={20} 
-          className="text-muted-foreground animate-bounce" 
+          className="text-muted-foreground animate-gentle-bounce stroke-1" 
         />
       </div>
     </section>
