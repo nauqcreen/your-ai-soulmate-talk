@@ -59,7 +59,7 @@ const SupportingEcosystem = () => {
     {
       id: 'matbao',
       name: 'Mắt Bão',
-      description: 'Đối tác Google cung cấp nền tảng Google Workspace',
+      description: 'Đối tác Google tại Việt Nam',
       logo: '/lovable-uploads/16f2568c-c350-4c2c-b7bf-904d9f5cb931.png',
       website: 'https://matbao.net',
       category: 'hosting'
