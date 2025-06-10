@@ -6,59 +6,59 @@ const Features = () => {
   const features = [
     {
       icon: Brain,
-      title: "Adaptive Learning",
-      description: "Your AI companion learns from every interaction, understanding your unique communication patterns and preferences."
+      title: "Tư Duy Cấu Trúc",
+      description: "Biến những ý tưởng rời rạc thành luận điểm mạch lạc, logic và thuyết phục."
     },
     {
       icon: MessageSquare,
-      title: "Natural Conversations",
-      description: "Engage in fluid, context-aware conversations that feel natural and meaningful, just like talking to a close friend."
+      title: "Biểu Đạt Tinh Tế",
+      description: "Nâng cao ngôn ngữ, giọng điệu và thần thái để tạo ấn tượng sâu sắc với người nghe."
     },
     {
       icon: Zap,
-      title: "Instant Responses",
-      description: "Get immediate, thoughtful responses tailored to your situation, helping you communicate more effectively."
+      title: "Phản Xạ Linh Hoạt",
+      description: "Phát triển khả năng ứng biến nhanh và tự tin trong mọi tình huống giao tiếp."
     },
     {
       icon: Shield,
-      title: "Privacy First",
-      description: "Your conversations are private and secure. We prioritize your data protection above everything else."
+      title: "Tự Tin Nội Tại",
+      description: "Xây dựng sự tự tin từ bên trong, giúp bạn thể hiện bản thân một cách tự nhiên và chân thực."
     },
     {
       icon: Users,
-      title: "Multi-Platform",
-      description: "Access your AI companion across all your devices and platforms for seamless communication everywhere."
+      title: "Cá Nhân Hóa",
+      description: "AI học hỏi và thích nghi với phong cách giao tiếp riêng của bạn, tạo trải nghiệm độc nhất."
     },
     {
       icon: Sparkles,
-      title: "Personalized Insights",
-      description: "Receive personalized suggestions and insights to improve your communication skills over time."
+      title: "Tác Động Thực Sự",
+      description: "Đo lường và cải thiện hiệu quả giao tiếp qua từng buổi luyện tập."
     }
   ];
 
   return (
-    <section id="features" className="py-20 bg-muted/50">
+    <section id="features" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Features That Adapt to You
+          <h2 className="text-3xl md:text-5xl font-bold font-lora mb-4 text-foreground">
+            Ba Trụ Cột Của Sự Thuyết Phục
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Discover how our AI companion revolutionizes the way you communicate with intelligent, personalized features.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Phát triển toàn diện khả năng giao tiếp từ tư duy đến biểu đạt, từ nội tại đến tác động bên ngoài.
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="hover-scale border-0 shadow-lg bg-background/80 backdrop-blur-sm">
+            <Card key={index} className="hover-scale border-border bg-background/60 backdrop-blur-sm shadow-sm hover:shadow-md">
               <CardHeader>
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <feature.icon className="text-purple-600" size={24} />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <feature.icon className="text-primary" size={24} />
                 </div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
+                <CardTitle className="text-xl font-lora text-foreground">{feature.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base leading-relaxed">
+                <CardDescription className="text-base leading-relaxed text-muted-foreground">
                   {feature.description}
                 </CardDescription>
               </CardContent>
