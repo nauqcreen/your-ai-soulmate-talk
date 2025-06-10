@@ -51,7 +51,7 @@ const SupportingEcosystem = () => {
       id: 'matbao',
       name: 'Mắt Bão',
       description: 'Hỗ trợ dịch vụ công nghệ thông tin',
-      logo: '/lovable-uploads/matbao-logo.png',
+      logo: '/lovable-uploads/16f2568c-c350-4c2c-b7bf-904d9f5cb931.png',
       website: '#'
     },
     {
