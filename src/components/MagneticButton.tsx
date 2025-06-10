@@ -6,6 +6,8 @@ interface MagneticButtonProps {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   magneticRadius?: number;
@@ -16,6 +18,8 @@ const MagneticButton = ({
   children, 
   className = '', 
   onClick, 
+  onMouseEnter,
+  onMouseLeave,
   type = 'button', 
   disabled = false,
   magneticRadius = 100,
@@ -56,6 +60,7 @@ const MagneticButton = ({
     const handleMouseEnter = () => {
       setIsHovered(true);
       button.style.transition = 'transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.15s ease-out';
+      onMouseEnter?.();
     };
 
     const handleMouseLeave = () => {
@@ -63,6 +68,7 @@ const MagneticButton = ({
       button.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease-out';
       button.style.transform = 'translate(0px, 0px) scale(1) rotateX(0deg) rotateY(0deg)';
       button.style.boxShadow = 'none';
+      onMouseLeave?.();
     };
 
     const handleClick = (e: MouseEvent) => {
@@ -107,7 +113,7 @@ const MagneticButton = ({
       button.removeEventListener('mouseleave', handleMouseLeave);
       button.removeEventListener('click', handleClick);
     };
-  }, [isHovered, disabled, magneticRadius, intensity, mousePosition]);
+  }, [isHovered, disabled, magneticRadius, intensity, mousePosition, onMouseEnter, onMouseLeave]);
 
   return (
     <Button
