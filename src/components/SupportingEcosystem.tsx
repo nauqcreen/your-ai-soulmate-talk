@@ -44,7 +44,7 @@ const SupportingEcosystem = () => {
       id: 'tiktok',
       name: 'TikTok',
       description: 'Hỗ trợ nền tảng truyền thông xã hội',
-      logo: '/lovable-uploads/83e28753-318a-4c3f-b689-313bad3d5669.png',
+      logo: '/lovable-uploads/455ba438-b802-43db-8b27-47840eaf3a0f.png',
       website: '#'
     },
     {
