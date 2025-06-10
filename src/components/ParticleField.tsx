@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 
 interface Particle {
@@ -8,6 +9,9 @@ interface Particle {
   size: number;
   opacity: number;
   hue: number;
+  type: 'normal' | 'star' | 'triangle';
+  pulse: number;
+  trail: Array<{ x: number; y: number; opacity: number }>;
 }
 
 const ParticleField = () => {
@@ -15,6 +19,8 @@ const ParticleField = () => {
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number>();
   const mouseRef = useRef({ x: 0, y: 0 });
+  const mouseVelocityRef = useRef({ x: 0, y: 0 });
+  const lastMouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -30,20 +36,114 @@ const ParticleField = () => {
 
     const createParticles = () => {
       const particles: Particle[] = [];
-      const particleCount = Math.min(80, Math.floor(window.innerWidth / 20));
+      const particleCount = Math.min(60, Math.floor(window.innerWidth / 25));
       
       for (let i = 0; i < particleCount; i++) {
+        const types: Array<'normal' | 'star' | 'triangle'> = ['normal', 'star', 'triangle'];
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 2 + 1.2, // Slightly larger than original
-          opacity: Math.random() * 0.4 + 0.2, // Slightly higher opacity
-          hue: Math.random() * 50 + 15 // Orange range, not too saturated
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: (Math.random() - 0.5) * 0.8,
+          size: Math.random() * 2.5 + 1.5,
+          opacity: Math.random() * 0.6 + 0.3,
+          hue: Math.random() * 60 + 10, // Warmer orange/yellow range
+          type: types[Math.floor(Math.random() * types.length)],
+          pulse: Math.random() * Math.PI * 2,
+          trail: []
         });
       }
       return particles;
+    };
+
+    const drawParticle = (particle: Particle) => {
+      // Update trail
+      particle.trail.push({ x: particle.x, y: particle.y, opacity: particle.opacity });
+      if (particle.trail.length > 8) {
+        particle.trail.shift();
+      }
+
+      // Draw trail
+      particle.trail.forEach((point, index) => {
+        const trailOpacity = (index / particle.trail.length) * point.opacity * 0.3;
+        const trailSize = particle.size * (index / particle.trail.length) * 0.5;
+        
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, trailSize, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${particle.hue}, 70%, 50%, ${trailOpacity})`;
+        ctx.fill();
+      });
+
+      // Pulse effect
+      particle.pulse += 0.1;
+      const pulseSize = particle.size + Math.sin(particle.pulse) * 0.5;
+      const pulseOpacity = particle.opacity + Math.sin(particle.pulse) * 0.2;
+
+      // Draw main particle based on type
+      ctx.save();
+      ctx.translate(particle.x, particle.y);
+      
+      switch (particle.type) {
+        case 'star':
+          drawStar(ctx, 0, 0, 5, pulseSize * 1.2, pulseSize * 0.6);
+          ctx.fillStyle = `hsla(${particle.hue}, 80%, 60%, ${pulseOpacity})`;
+          ctx.fill();
+          break;
+          
+        case 'triangle':
+          drawTriangle(ctx, 0, 0, pulseSize * 1.5);
+          ctx.fillStyle = `hsla(${particle.hue}, 70%, 55%, ${pulseOpacity})`;
+          ctx.fill();
+          break;
+          
+        default:
+          // Normal circle with glow
+          ctx.beginPath();
+          ctx.arc(0, 0, pulseSize, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${particle.hue}, 75%, 55%, ${pulseOpacity})`;
+          ctx.fill();
+          
+          // Outer glow
+          ctx.beginPath();
+          ctx.arc(0, 0, pulseSize * 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${particle.hue}, 80%, 60%, ${pulseOpacity * 0.2})`;
+          ctx.fill();
+      }
+      
+      ctx.restore();
+    };
+
+    const drawStar = (ctx: CanvasRenderingContext2D, cx: number, cy: number, spikes: number, outerRadius: number, innerRadius: number) => {
+      let rot = (Math.PI / 2) * 3;
+      let x = cx;
+      let y = cy;
+      const step = Math.PI / spikes;
+
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - outerRadius);
+
+      for (let i = 0; i < spikes; i++) {
+        x = cx + Math.cos(rot) * outerRadius;
+        y = cy + Math.sin(rot) * outerRadius;
+        ctx.lineTo(x, y);
+        rot += step;
+
+        x = cx + Math.cos(rot) * innerRadius;
+        y = cy + Math.sin(rot) * innerRadius;
+        ctx.lineTo(x, y);
+        rot += step;
+      }
+
+      ctx.lineTo(cx, cy - outerRadius);
+      ctx.closePath();
+    };
+
+    const drawTriangle = (ctx: CanvasRenderingContext2D, cx: number, cy: number, size: number) => {
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - size);
+      ctx.lineTo(cx - size, cy + size);
+      ctx.lineTo(cx + size, cy + size);
+      ctx.closePath();
     };
 
     const connectParticles = (particles: Particle[]) => {
@@ -53,12 +153,16 @@ const ParticleField = () => {
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 120) {
-            const opacity = (120 - distance) / 120 * 0.4;
+          if (distance < 150) {
+            const opacity = (150 - distance) / 150 * 0.5;
+            const gradient = ctx.createLinearGradient(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+            gradient.addColorStop(0, `hsla(${particles[i].hue}, 70%, 50%, ${opacity})`);
+            gradient.addColorStop(1, `hsla(${particles[j].hue}, 70%, 50%, ${opacity})`);
+            
             ctx.beginPath();
-            ctx.strokeStyle = `hsla(30, 60%, 40%, ${opacity})`; // Moderate orange connections
-            ctx.lineWidth = 0.8;
-            ctx.moveTo(particles[i].x, particles[j].y);
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = Math.max(0.5, (150 - distance) / 150 * 2);
+            ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
           }
@@ -69,45 +173,62 @@ const ParticleField = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
+      // Calculate mouse velocity
+      mouseVelocityRef.current.x = mouseRef.current.x - lastMouseRef.current.x;
+      mouseVelocityRef.current.y = mouseRef.current.y - lastMouseRef.current.y;
+      lastMouseRef.current = { ...mouseRef.current };
+      
       particlesRef.current.forEach(particle => {
-        // Mouse interaction
+        // Mouse attraction with repulsion when moving fast
         const dx = mouseRef.current.x - particle.x;
         const dy = mouseRef.current.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
+        const mouseSpeed = Math.sqrt(mouseVelocityRef.current.x ** 2 + mouseVelocityRef.current.y ** 2);
         
-        if (distance < 100) {
-          const force = (100 - distance) / 100 * 0.03;
-          particle.vx += dx * force * 0.01;
-          particle.vy += dy * force * 0.01;
+        if (distance < 200) {
+          const force = (200 - distance) / 200 * 0.05;
+          const repulsion = mouseSpeed > 10 ? 2 : 1;
+          
+          if (mouseSpeed > 10) {
+            // Repel when mouse moves fast
+            particle.vx -= (dx / distance) * force * repulsion;
+            particle.vy -= (dy / distance) * force * repulsion;
+          } else {
+            // Attract when mouse moves slow
+            particle.vx += (dx / distance) * force * 0.5;
+            particle.vy += (dy / distance) * force * 0.5;
+          }
         }
         
         // Update position
         particle.x += particle.vx;
         particle.y += particle.vy;
         
-        // Boundary bouncing
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -0.8;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -0.8;
+        // Smooth boundary bouncing
+        if (particle.x < 0 || particle.x > canvas.width) {
+          particle.vx *= -0.8;
+          particle.x = Math.max(0, Math.min(canvas.width, particle.x));
+        }
+        if (particle.y < 0 || particle.y > canvas.height) {
+          particle.vy *= -0.8;
+          particle.y = Math.max(0, Math.min(canvas.height, particle.y));
+        }
         
-        // Keep in bounds
-        particle.x = Math.max(0, Math.min(canvas.width, particle.x));
-        particle.y = Math.max(0, Math.min(canvas.height, particle.y));
+        // Gentle drift towards center
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        particle.vx += (centerX - particle.x) * 0.0002;
+        particle.vy += (centerY - particle.y) * 0.0002;
         
         // Friction
-        particle.vx *= 0.99;
-        particle.vy *= 0.99;
+        particle.vx *= 0.995;
+        particle.vy *= 0.995;
         
-        // Draw particle core
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${particle.hue}, 60%, 40%, ${particle.opacity})`;
-        ctx.fill();
+        // Slight hue shift over time
+        particle.hue += 0.1;
+        if (particle.hue > 70) particle.hue = 10;
         
-        // Simple glow effect
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size * 2, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${particle.hue}, 50%, 45%, ${particle.opacity * 0.3})`;
-        ctx.fill();
+        drawParticle(particle);
       });
       
       connectParticles(particlesRef.current);
@@ -119,12 +240,36 @@ const ParticleField = () => {
       mouseRef.current.y = e.clientY;
     };
 
+    const handleClick = (e: MouseEvent) => {
+      // Add burst effect on click
+      for (let i = 0; i < 8; i++) {
+        particlesRef.current.push({
+          x: e.clientX,
+          y: e.clientY,
+          vx: (Math.random() - 0.5) * 8,
+          vy: (Math.random() - 0.5) * 8,
+          size: Math.random() * 3 + 2,
+          opacity: 0.8,
+          hue: Math.random() * 60 + 10,
+          type: Math.random() > 0.7 ? 'star' : 'normal',
+          pulse: 0,
+          trail: []
+        });
+      }
+      
+      // Remove excess particles
+      if (particlesRef.current.length > 100) {
+        particlesRef.current.splice(0, particlesRef.current.length - 100);
+      }
+    };
+
     resizeCanvas();
     particlesRef.current = createParticles();
     animate();
 
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('click', handleClick);
 
     return () => {
       if (animationRef.current) {
@@ -132,6 +277,7 @@ const ParticleField = () => {
       }
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('click', handleClick);
     };
   }, []);
 
