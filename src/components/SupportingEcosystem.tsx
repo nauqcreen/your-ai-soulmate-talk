@@ -7,6 +7,20 @@ const SupportingEcosystem = () => {
 
   const supporters = [
     {
+      id: 'vnu',
+      name: 'Đại học Quốc gia Hà Nội',
+      description: 'Cơ sở giáo dục và nghiên cứu hàng đầu Việt Nam',
+      logo: '/lovable-uploads/7eec28a8-a177-401d-86e8-da999f14d0ee.png',
+      website: '#'
+    },
+    {
+      id: 'visi',
+      name: 'VISI Innovation Center',
+      description: 'Trung tâm đổi mới sáng tạo và khởi nghiệp',
+      logo: 'https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=200&h=100&fit=crop',
+      website: '#'
+    },
+    {
       id: 'aws',
       name: 'Amazon Web Services',
       description: 'Hỗ trợ nền tảng điện toán đám mây',
@@ -14,52 +28,38 @@ const SupportingEcosystem = () => {
       website: '#'
     },
     {
-      id: 'google',
-      name: 'Google Cloud',
-      description: 'Hỗ trợ công nghệ AI và machine learning',
-      logo: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=200&h=100&fit=crop',
-      website: '#'
-    },
-    {
-      id: 'microsoft',
-      name: 'Microsoft',
-      description: 'Hỗ trợ phần mềm và công cụ phát triển',
-      logo: 'https://images.unsplash.com/photo-1618044733300-9472054094ee?w=200&h=100&fit=crop',
-      website: '#'
-    },
-    {
-      id: 'openai',
-      name: 'OpenAI',
-      description: 'Hỗ trợ công nghệ trí tuệ nhân tạo',
+      id: 'perplexity',
+      name: 'Perplexity AI',
+      description: 'Công nghệ tìm kiếm và trí tuệ nhân tạo',
       logo: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200&h=100&fit=crop',
       website: '#'
     },
     {
-      id: 'facebook',
-      name: 'Meta',
-      description: 'Hỗ trợ nghiên cứu và phát triển',
+      id: 'twendee',
+      name: 'Twendee Labs',
+      description: 'Hỗ trợ nghiên cứu và phát triển công nghệ',
+      logo: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=100&fit=crop',
+      website: '#'
+    },
+    {
+      id: 'tiktok',
+      name: 'TikTok',
+      description: 'Hỗ trợ nền tảng truyền thông xã hội',
       logo: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=200&h=100&fit=crop',
       website: '#'
     },
     {
-      id: 'github',
-      name: 'GitHub',
-      description: 'Hỗ trợ nền tảng phát triển và collaboration',
+      id: 'matbao',
+      name: 'Mắt Bão',
+      description: 'Hỗ trợ dịch vụ công nghệ thông tin',
       logo: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=200&h=100&fit=crop',
       website: '#'
     },
     {
-      id: 'figma',
-      name: 'Figma',
-      description: 'Hỗ trợ công cụ thiết kế và prototype',
+      id: 'sunwah',
+      name: 'Sunwah Innovation Center',
+      description: 'Trung tâm đổi mới và phát triển doanh nghiệp',
       logo: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop',
-      website: '#'
-    },
-    {
-      id: 'notion',
-      name: 'Notion',
-      description: 'Hỗ trợ công cụ quản lý dự án',
-      logo: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=200&h=100&fit=crop',
       website: '#'
     }
   ];
