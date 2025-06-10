@@ -20,8 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'lora': ['Lora', 'serif'],
-				'inter': ['Inter', 'sans-serif'],
+				'cormorant': ['Cormorant Garamond', 'serif'],
+				'satoshi': ['Satoshi', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -96,7 +96,7 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			fontSize: {
-				'base': ['18px', '1.6'],
+				'base': ['18px', '28px'], // 28px = 7 * 4px baseline
 			}
 		}
 	},

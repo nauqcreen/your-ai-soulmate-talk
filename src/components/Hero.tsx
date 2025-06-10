@@ -28,7 +28,7 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative">
       <div className="container mx-auto px-4 text-center max-w-4xl">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-lora mb-8 text-foreground leading-tight">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-cormorant mb-8 text-foreground leading-tight">
           {mainTitle.split('').map((char, index) => (
             <span
               key={index}
@@ -44,7 +44,7 @@ const Hero = () => {
         </h1>
         
         <p 
-          className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in-up opacity-0" 
+          className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in-up opacity-0 font-satoshi" 
           style={{ animationDelay: '1.5s', animationFillMode: 'forwards' }}
         >
           {subtitle}
@@ -53,7 +53,7 @@ const Hero = () => {
       
       {/* Scroll hint chevron */}
       <div 
-        className={`absolute bottom-12 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${
+        className={`absolute bottom-12 left-1/2 transform -translate-x-1/2 transition-all duration-500 hover-cursor ${
           showScrollHint ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
       >

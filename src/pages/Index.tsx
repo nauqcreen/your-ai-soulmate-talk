@@ -6,10 +6,14 @@ import TheMethod from "../components/TheMethod";
 import TheEmpowerment from "../components/TheEmpowerment";
 import Navigation from "../components/Navigation";
 import MinimalFooter from "../components/MinimalFooter";
+import CustomCursor from "../components/CustomCursor";
+import ScrollProgress from "../components/ScrollProgress";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <CustomCursor />
+      <ScrollProgress />
       <Navigation />
       <Hero />
       <TheGap />
