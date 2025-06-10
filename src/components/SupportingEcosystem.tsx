@@ -115,16 +115,16 @@ const SupportingEcosystem = () => {
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-crimson text-foreground mb-6 leading-tight">
-              Tự hào là một phần của{' '}
+              Tự hào là một phần của hệ sinh thái{' '}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                hệ sinh thái Vườn ươm VISI
+                Vườn ươm VISI
               </span>{' '}
             </h2>
           </div>
           
           {/* Enhanced Descriptive Text */}
           <p className="text-lg md:text-xl text-muted-foreground mb-16 max-w-4xl mx-auto leading-relaxed font-source">
-            Là một dự án tiềm năng tại VISI, chúng tôi được tăng tốc về{' '}
+            Là một dự án được lựa chọn tại VISI, chúng tôi được tôi luyện về{' '}
             <span className="text-primary font-medium">công nghệ</span>,{' '}
             <span className="text-primary font-medium">chuyên môn</span> và{' '}
             <span className="text-primary font-medium">cơ sở vật chất</span> từ các tổ chức hàng đầu trong nước & quốc tế.
