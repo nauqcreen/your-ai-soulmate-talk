@@ -1,6 +1,7 @@
 
 import Hero from "../components/Hero";
 import PainPoint from "../components/PainPoint";
+import ValuePillars from "../components/ValuePillars";
 import Features from "../components/Features";
 import HowItWorks from "../components/HowItWorks";
 import Testimonials from "../components/Testimonials";
@@ -14,6 +15,7 @@ const Index = () => {
       <Navigation />
       <Hero />
       <PainPoint />
+      <ValuePillars />
       <Features />
       <HowItWorks />
       <Testimonials />
