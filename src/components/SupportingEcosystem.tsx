@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
@@ -45,7 +44,7 @@ const SupportingEcosystem = () => {
       id: 'tiktok',
       name: 'TikTok',
       description: 'Hỗ trợ nền tảng truyền thông xã hội',
-      logo: '/lovable-uploads/7004f974-606a-4745-80fa-c5f545e96b48.png',
+      logo: '/lovable-uploads/1ed052e1-a783-42e0-9e17-8a56e5b0f746.png',
       website: '#'
     },
     {
