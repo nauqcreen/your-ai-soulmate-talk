@@ -61,7 +61,7 @@ const CTA = () => {
                         isValidEmail ? 'animate-pulse' : ''
                       }`}
                     >
-                      Nhận Lời Mời Sớm
+                      Nhận lời mời sớm
                     </Button>
                   </div>
                 </form>

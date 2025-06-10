@@ -9,7 +9,7 @@ const Hero = () => {
   const [showScrollHint, setShowScrollHint] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
-  const mainTitle = "Ý Tưởng Của Bạn Thực Sự Trị Giá Bao Nhiêu?";
+  const mainTitle = "Ý tưởng của bạn thực sự trị giá bao nhiêu?";
   const subtitle = "Khi nó được trình bày một cách thuyết phục.";
 
   useEffect(() => {

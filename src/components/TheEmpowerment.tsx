@@ -35,7 +35,7 @@ const TheEmpowerment = () => {
             <>
               <TextReveal className="mb-8">
                 <h2 className="text-3xl md:text-5xl font-bold font-crimson text-foreground leading-tight">
-                  Biến Trí Tuệ Thành Tầm Ảnh Hưởng.
+                  Biến trí tuệ thành tầm ảnh hưởng.
                 </h2>
               </TextReveal>
               
@@ -45,7 +45,7 @@ const TheEmpowerment = () => {
               
               <div className="mb-8">
                 <h3 className="text-2xl font-crimson font-semibold text-foreground mb-4">
-                  Đăng Ký Truy Cập Sớm & Nhận "Báo Cáo Năng Lực Giao Tiếp" Đầu Tiên Của Bạn.
+                  Đăng ký nhận thông tin sớm, truy cập sớm, và nhận báo cáo năng lực đầu tiên
                 </h3>
                 
                 <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -78,7 +78,7 @@ const TheEmpowerment = () => {
           ) : (
             <div className="py-16">
               <h2 className="text-3xl md:text-4xl font-crimson text-foreground leading-relaxed">
-                Cảm ơn bạn. Chúng tôi sẽ liên hệ sớm để gửi báo cáo đầu tiên của bạn.
+                Cảm ơn bạn. Chúng tôi sẽ liên hệ sớm để gửi thông tin đầu tiên cho bạn.
               </h2>
             </div>
           )}

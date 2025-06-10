@@ -7,15 +7,15 @@ const TheArena = () => {
 
   const contexts = [
     {
-      title: "Thuyết Trình & Bảo Vệ",
-      description: "Bạn bảo vệ dự án tâm huyết mà mình đã chuẩn bị hàng tháng trời. Làm thế nào để màn trình diễn cuối cùng xứng tầm với tất cả công sức đó?"
+      title: "Thuyết trình & Bảo vệ",
+      description: "Bạn bảo vệ dự án tâm huyết mà mình đã chuẩn bị hàng tháng trời. Làm thế nào để màn trình diễn cuối cùng xứng tầm tất cả công sức đó?"
     },
     {
-      title: "Phỏng Vấn & Gặp Gỡ",
+      title: "Phỏng vấn & Gặp gỡ",
       description: "Năng lực của bạn được thể hiện hoàn hảo trên giấy tờ. Nhưng trong 30 phút đối thoại, làm sao để bộc lộ hết được tiềm năng con người bạn?"
     },
     {
-      title: "Họp Nhóm & Tranh Luận",
+      title: "Họp nhóm & Tranh luận",
       description: "Một ý kiến trái chiều bất ngờ xuất hiện. Làm thế nào để biến khoảnh khắc não bộ \"đứng hình\" thành một luận điểm phản biện thông minh và tức thì?"
     }
   ];
@@ -26,7 +26,7 @@ const TheArena = () => {
         <div className="text-center mb-16">
           <TextReveal>
             <h2 className="text-3xl md:text-5xl font-bold font-crimson text-foreground mb-4">
-              Những Khoảnh Khắc Quyết Định.
+              Những khoảnh khắc quyết định.
             </h2>
           </TextReveal>
         </div>
