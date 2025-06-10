@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import TheGap from "../components/TheGap";
 import TheArena from "../components/TheArena";
 import TheMethod from "../components/TheMethod";
+import SupportingEcosystem from "../components/SupportingEcosystem";
 import TheEmpowerment from "../components/TheEmpowerment";
 import Navigation from "../components/Navigation";
 import MinimalFooter from "../components/MinimalFooter";
@@ -25,6 +26,7 @@ const Index = () => {
       <TheGap />
       <TheArena />
       <TheMethod />
+      <SupportingEcosystem />
       <TheEmpowerment />
       <MinimalFooter />
     </div>
