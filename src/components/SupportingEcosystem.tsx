@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
@@ -96,7 +97,7 @@ const SupportingEcosystem = () => {
                         className={`w-full h-full object-contain transition-all duration-300 ease-out ${
                           hoveredLogo === supporter.id
                             ? 'filter-none transform scale-110'
-                            : 'filter grayscale transform scale-110 hover:filter-none hover:scale-110'
+                            : 'filter grayscale transform scale-110 hover:filter-none hover:scale-125'
                         }`}
                       />
                     </div>
