@@ -73,6 +73,84 @@
   }
 }
 
+/* Enhanced Hero Animations */
+@keyframes char-fade-in-enhanced {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotateX(90deg);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(10px) rotateX(45deg);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+    filter: blur(0px);
+  }
+}
+
+@keyframes fade-in-up-enhanced {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes scroll-bounce-enhanced {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes gentle-bounce-enhanced {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.1);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+@keyframes float-delayed-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(-3deg); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
 /* Advanced morphing animations */
 @keyframes morph {
   0%, 100% {
@@ -177,6 +255,18 @@
   animation: float 6s ease-in-out infinite;
 }
 
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-delayed-slow {
+  animation: float-delayed-slow 10s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
 .animate-slow-spin {
   animation: slow-spin 20s linear infinite;
 }
@@ -199,6 +289,26 @@
 
 .animate-scale-in {
   animation: scale-in 0.4s ease-out;
+}
+
+.animate-char-fade-in-enhanced {
+  animation: char-fade-in-enhanced 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up-enhanced {
+  animation: fade-in-up-enhanced 1s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-scroll-bounce-enhanced {
+  animation: scroll-bounce-enhanced 2s ease-in-out infinite;
+}
+
+.animate-gentle-bounce-enhanced {
+  animation: gentle-bounce-enhanced 3s ease-in-out infinite;
 }
 
 .animate-morph {
