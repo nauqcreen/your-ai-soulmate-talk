@@ -10,7 +10,7 @@ const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
   const mainTitle = "Ý tưởng của bạn thực sự trị giá bao nhiêu?";
-  const subtitle = "Khi nó được trình bày một cách thuyết phục.";
+  const subtitle = "Khi nó được trình bày một cách thuyết phục";
 
   useEffect(() => {
     const timer = setTimeout(() => {
