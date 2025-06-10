@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,6 +99,7 @@
     @apply bg-background text-foreground font-source;
     font-size: 18px;
     line-height: 28px; /* 28px = 7 * 4px baseline */
+    cursor: none; /* Hide default cursor for custom cursor */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -138,7 +140,7 @@
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  /* Fade in animation with weight and physics */
+  /* Enhanced fade in animation with weight and physics */
   @keyframes fade-in-up {
     from {
       opacity: 0;
@@ -152,6 +154,47 @@
 
   .animate-fade-in-up {
     animation: fade-in-up 600ms ease-out forwards;
+  }
+
+  /* Enhanced fade-in-up animation */
+  @keyframes fade-in-up-enhanced {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  .animate-fade-in-up-enhanced {
+    animation: fade-in-up-enhanced 1200ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  /* Enhanced character fade-in animation */
+  @keyframes char-fade-in-enhanced {
+    from {
+      opacity: 0;
+      transform: translateY(30px) rotateX(90deg);
+      filter: blur(5px);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translateY(-5px) rotateX(0deg);
+      filter: blur(2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) rotateX(0deg);
+      filter: blur(0);
+    }
+  }
+
+  .animate-char-fade-in-enhanced {
+    animation: char-fade-in-enhanced 1200ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
   }
 
   /* Character fade-in animation */
@@ -213,6 +256,23 @@
     }
   }
 
+  /* Enhanced gentle bounce for scroll indicator */
+  @keyframes gentle-bounce-enhanced {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    40% {
+      transform: translateY(-6px) scale(1.05);
+    }
+    60% {
+      transform: translateY(-3px) scale(1.02);
+    }
+  }
+
+  .animate-gentle-bounce-enhanced {
+    animation: gentle-bounce-enhanced 3s infinite;
+  }
+
   /* Gentle bounce for scroll indicator */
   @keyframes gentle-bounce {
     0%, 20%, 50%, 80%, 100% {
@@ -246,8 +306,39 @@
     animation: cross-fade-in 400ms ease-out forwards;
   }
 
-  /* New micro-interactions and enhanced animations */
-  
+  /* Enhanced floating animations for background elements */
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-30px) rotate(2deg);
+    }
+    66% {
+      transform: translateY(15px) rotate(-1deg);
+    }
+  }
+
+  @keyframes float-delayed-slow {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(25px) rotate(-2deg);
+    }
+    66% {
+      transform: translateY(-20px) rotate(1deg);
+    }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 12s ease-in-out infinite;
+  }
+
+  .animate-float-delayed-slow {
+    animation: float-delayed-slow 16s ease-in-out infinite 3s;
+  }
+
   /* Floating animation for background elements */
   @keyframes float {
     0%, 100% {
@@ -276,6 +367,20 @@
   }
 
   /* Enhanced scroll bounce animation */
+  @keyframes scroll-bounce-enhanced {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(12px) scale(1.1);
+    }
+  }
+
+  .animate-scroll-bounce-enhanced {
+    animation: scroll-bounce-enhanced 2.5s ease-in-out infinite;
+  }
+
+  /* Enhanced scroll bounce animation */
   @keyframes scroll-bounce {
     0%, 100% {
       transform: translateY(0);
@@ -287,6 +392,29 @@
 
   .animate-scroll-bounce {
     animation: scroll-bounce 2s ease-in-out infinite;
+  }
+
+  /* Enhanced pulse animation for icons */
+  @keyframes icon-entrance {
+    0% {
+      transform: scale(0) rotate(-180deg);
+      opacity: 0;
+      filter: blur(10px);
+    }
+    50% {
+      transform: scale(1.2) rotate(-90deg);
+      opacity: 0.8;
+      filter: blur(2px);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  .animate-icon-entrance {
+    animation: icon-entrance 1200ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
   }
 
   /* Pulse once animation for icons */
@@ -309,6 +437,41 @@
     animation: pulse-once 0.8s ease-out forwards;
   }
 
+  /* Enhanced pulse slow animation */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+
+  /* Enhanced ripple effect for buttons */
+  @keyframes ripple-enhanced {
+    0% {
+      transform: scale(0);
+      opacity: 0.8;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(184,115,51,0.4) 30%, transparent 70%);
+    }
+    100% {
+      transform: scale(6);
+      opacity: 0;
+      background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(184,115,51,0) 30%, transparent 70%);
+    }
+  }
+
+  .animate-ripple-enhanced {
+    animation: ripple-enhanced 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 50%;
+  }
+
   /* Ripple effect for buttons */
   @keyframes ripple {
     0% {
@@ -326,6 +489,27 @@
   .animate-ripple {
     animation: ripple 0.6s ease-out;
     border-radius: 50%;
+  }
+
+  /* Glow pulse animation */
+  @keyframes glow-pulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  /* Drop shadow glow effect */
+  .hover\\:drop-shadow-glow:hover {
+    filter: drop-shadow(0 0 20px rgba(184, 115, 51, 0.5));
   }
 
   /* Enhanced text reveal with better timing */
@@ -477,4 +661,33 @@
     outline-offset: 2px;
     transition: outline 0.2s ease;
   }
+
+  /* Custom cursor styles */
+  button, a, [role="button"] {
+    cursor: none;
+  }
+
+  /* Glassmorphism effects */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Advanced micro-interactions */
+  .micro-bounce:hover {
+    animation: micro-bounce 0.3s ease-in-out;
+  }
+
+  @keyframes micro-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+
+  /* Stagger animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
 }

@@ -7,10 +7,12 @@ import TheEmpowerment from "../components/TheEmpowerment";
 import Navigation from "../components/Navigation";
 import MinimalFooter from "../components/MinimalFooter";
 import ScrollProgress from "../components/ScrollProgress";
+import GlowCursor from "../components/GlowCursor";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <GlowCursor />
       <ScrollProgress />
       <Navigation />
       <Hero />
