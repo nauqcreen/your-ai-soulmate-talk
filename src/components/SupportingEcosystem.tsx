@@ -115,11 +115,11 @@ const SupportingEcosystem = () => {
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-crimson text-foreground mb-6 leading-tight">
-              Tự hào là một phần của{' '}
+              Là dự án được lựa chọn bởi{' '}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Vườn ươm VISI
               </span>{' '}
-              và hệ sinh thái hỗ trợ
+              , Tinktalk được xây dựng và tăng tốc trên nền tảng của các đối tác công nghệ và học thuật hàng đầu
             </h2>
           </div>
           
