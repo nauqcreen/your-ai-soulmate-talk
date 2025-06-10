@@ -11,7 +11,7 @@ const SupportingEcosystemHeader = () => {
       </div>
       
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-crimson text-foreground mb-6 leading-tight animate-fade-in-up-enhanced">
-        Tự hào là một phần của hệ sinh thái{' '}
+        Tự hào là một phần của{' '}
         <span className="bg-gradient-to-r from-primary via-orange-500 to-accent bg-clip-text text-transparent animate-gradient-shift">
           Vườn ươm VISI
         </span>{' '}
