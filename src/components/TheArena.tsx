@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { Target, Briefcase, Brain } from "lucide-react";
 import TextReveal from './TextReveal';
