@@ -7,12 +7,18 @@ import TheEmpowerment from "../components/TheEmpowerment";
 import Navigation from "../components/Navigation";
 import MinimalFooter from "../components/MinimalFooter";
 import ScrollProgress from "../components/ScrollProgress";
-import GlowCursor from "../components/GlowCursor";
+import FloatingElements from "../components/FloatingElements";
+import AnimatedBackground from "../components/AnimatedBackground";
+import ParticleField from "../components/ParticleField";
+import MorphingShape from "../components/MorphingShape";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background relative">
-      <GlowCursor />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      <ParticleField />
+      <AnimatedBackground />
+      <MorphingShape />
+      <FloatingElements count={15} />
       <ScrollProgress />
       <Navigation />
       <Hero />
