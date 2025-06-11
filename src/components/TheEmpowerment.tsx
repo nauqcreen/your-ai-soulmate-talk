@@ -107,7 +107,7 @@ const TheEmpowerment = () => {
               </TextReveal>
               
               <p className="text-xl mb-12 text-muted-foreground leading-relaxed max-w-3xl mx-auto font-source">
-                Tinktalk không dạy những gì cần nói. Tinktalk giúp bạn giải phóng khả năng nói ra những điều tuyệt vời mà bạn vốn đã biết.
+                Tinktalk không dạy những gì cần nói. Tinktalk giúp bạn giải phóng khả năng nói ra những điều tuyệt vời mà bạn vốn đã biết cùng người bạn AI cá nhân.
               </p>
               
               <div className="mb-8">
