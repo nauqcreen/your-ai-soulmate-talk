@@ -1,7 +1,7 @@
 
 const PartnerStats = () => {
   const stats = [
-    { value: '10+', label: 'Đối tác chiến lược' },
+    { value: '15+', label: 'Đối tác chiến lược' },
     { value: '5', label: 'Lĩnh vực hỗ trợ' },
     { value: '100%', label: 'Cam kết hỗ trợ' }
   ];
