@@ -53,7 +53,7 @@ const EmailInput = ({
           `}
           required
         />
-        
+        hê
         <div className={`absolute right-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
           isValidEmail ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
         }`}>
