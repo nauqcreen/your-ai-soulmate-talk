@@ -96,11 +96,6 @@ const MultiStepForm = () => {
           ✅ Cảm ơn bạn đã đăng ký!
         </p>
       )}
-      <FormStatusMessage 
-          email={email}
-          isValidEmail={isValidEmail}
-          isLoading={isLoading}
-        />
       </div>
     </form>
     <p className="text-sm text-muted-foreground mt-6 max-w-2xl mx-auto leading-relaxed font-source">
