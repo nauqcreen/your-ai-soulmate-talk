@@ -1,51 +1,55 @@
-
 import { useState } from "react";
 import { Send } from "lucide-react";
 import MagneticButton from './MagneticButton';
 
 interface SubmitButtonProps {
-  isValidEmail: boolean;
+  isFormValid: boolean;
   isLoading: boolean;
+  isFinalStep: boolean;
 }
 
-const SubmitButton = ({ isValidEmail, isLoading }: SubmitButtonProps) => {
+const SubmitButton = ({ isFormValid, isLoading, isFinalStep }: SubmitButtonProps) => {
   const [buttonHovered, setButtonHovered] = useState(false);
+
+  const buttonText = isLoading
+    ? "Đang xử lý..."
+    : (isFinalStep ? "Nhận thông tin..." : "Tiếp tục");
 
   return (
     <div className="relative group">
       <div className={`absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary rounded-lg blur-lg opacity-0 transition-all duration-700 ${
-        buttonHovered || isValidEmail ? 'opacity-60 scale-110' : ''
+        buttonHovered || isFormValid ? 'opacity-60 scale-110' : ''
       }`}></div>
       
       <MagneticButton 
         type="submit"
-        disabled={!isValidEmail || isLoading}
+        disabled={!isFormValid || isLoading}
         onMouseEnter={() => setButtonHovered(true)}
         onMouseLeave={() => setButtonHovered(false)}
         className={`relative z-10 bg-primary text-primary-foreground text-lg px-8 py-3 h-12 whitespace-nowrap transition-all duration-500 font-source overflow-hidden group/btn
-          ${isValidEmail && !isLoading ? 'hover:bg-primary/90 hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-primary/30' : 'opacity-50 cursor-not-allowed'}
-          ${buttonHovered && isValidEmail && !isLoading ? 'animate-pulse' : ''}
+          ${isFormValid && !isLoading ? 'hover:bg-primary/90 hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-primary/30' : 'opacity-50 cursor-not-allowed'}
+          ${buttonHovered && isFormValid && !isLoading ? 'animate-pulse' : ''}
         `}
       >
         <div className="flex items-center gap-2 relative z-10">
           <span className="transition-transform duration-300 group-hover/btn:translate-x-1">
-            {isLoading ? 'Đang xử lý...' : 'Nhận thông tin dự án'}
+            {buttonText}
           </span>
           {!isLoading && (
             <Send className={`transition-all duration-300 ${
-              buttonHovered && isValidEmail ? 'translate-x-1 scale-110' : ''
+              buttonHovered && isFormValid ? 'translate-x-1 scale-110' : ''
             }`} size={16} />
           )}
         </div>
         
         {/* Button glow effect */}
         <div className={`absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000 ${
-          isValidEmail && !isLoading ? '' : 'hidden'
+          isFormValid && !isLoading ? '' : 'hidden'
         }`}></div>
         
         {/* Particle burst effect on hover */}
         <div className={`absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 ${
-          isValidEmail && !isLoading ? '' : 'hidden'
+          isFormValid && !isLoading ? '' : 'hidden'
         }`}>
           {[...Array(6)].map((_, i) => (
             <div
