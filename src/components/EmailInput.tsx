@@ -1,4 +1,3 @@
-
 import { useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Mail, Check } from "lucide-react";
@@ -33,10 +32,6 @@ const EmailInput = ({
       }`}></div>
       
       <div className="relative">
-        <Mail className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
-          isFocused ? 'text-primary scale-110' : 'text-muted-foreground'
-        } ${isTyping ? 'animate-pulse' : ''}`} size={18} />
-        
         <Input
           ref={inputRef}
           type="email"
@@ -53,6 +48,9 @@ const EmailInput = ({
           `}
           required
         />
+        <Mail className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
+          isFocused ? 'text-primary scale-110' : 'text-muted-foreground'
+        } ${isTyping ? 'animate-pulse' : ''}`} size={18} />
         
         <div className={`absolute right-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 ${
           isValidEmail ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
