@@ -1,73 +1,61 @@
 
-import { useState } from "react";
+import { useRef } from "react";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { User, Check } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
 interface AgeInputProps {
-  value?: number;
-  onChange?: (age: number) => void;
-  placeholder?: string;
-  label?: string;
-  required?: boolean;
-  min?: number;
-  max?: number;
-  className?: string;
+  age: string;
+  isValidAge: boolean;
+  isFocused: boolean;
+  isTyping: boolean;
+  isLoading: boolean;
+  onAgeChange: (e: string) => void;
+  onFocus: () => void;
+  onBlur: () => void;
 }
 
 const AgeInput = ({
-  value,
-  onChange,
-  placeholder = "Nhập tuổi của bạn...",
-  label = "Tuổi",
-  required = false,
-  min = 1,
-  max = 120,
-  className
+  age,
+  isValidAge,
+  isFocused,
+  isTyping,
+  isLoading,
+  onAgeChange,
+  onFocus,
+  onBlur
 }: AgeInputProps) => {
-  const [age, setAge] = useState<string>(value?.toString() || "");
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    
-    // Only allow numbers
-    if (inputValue === "" || /^\d+$/.test(inputValue)) {
-      setAge(inputValue);
-      
-      if (inputValue !== "" && onChange) {
-        const numericAge = parseInt(inputValue);
-        if (numericAge >= min && numericAge <= max) {
-          onChange(numericAge);
-        }
-      }
-    }
+  const handleSelectChange = (value: string) => {
+    onAgeChange(value);
   };
 
   return (
-    <div className={className}>
-      {label && (
-        <Label htmlFor="age-input" className="text-sm font-medium text-foreground mb-2 block">
-          {label}
-          {required && <span className="text-destructive ml-1">*</span>}
-        </Label>
-      )}
-      <Input
-        id="age-input"
-        type="text"
-        inputMode="numeric"
-        pattern="[0-9]*"
-        value={age}
-        onChange={handleChange}
-        placeholder={placeholder}
-        min={min}
-        max={max}
-        required={required}
-        className="font-source"
-      />
-      {age && (parseInt(age) < min || parseInt(age) > max) && (
-        <p className="text-sm text-destructive mt-1">
-          Tuổi phải từ {min} đến {max}
-        </p>
-      )}
+    <div className="flex-1 relative group">
+      <div className={`absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-lg opacity-0 transition-all duration-700 ${
+        isFocused || isValidAge ? 'opacity-100 scale-110' : ''
+      }`}></div>
+      <div className="relative w-full">        
+        <Select onValueChange={handleSelectChange} value={age}>
+          <SelectTrigger className={`relative appearance-none w-full h-12 pl-10 text-lg bg-background/80 backdrop-blur-sm border-2 rounded-lg transition-all duration-500 font-source border-input ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm
+            ${isFocused ? 'border-primary shadow-lg shadow-primary/20 bg-background' : 'border-border'}
+            ${isValidAge ? 'border-green-500 shadow-lg shadow-green-500/20' : ''}
+            hover:border-primary/50 hover:shadow-md group-hover:scale-[1.02] disabled:opacity-60`} onFocus={onFocus} onBlur={onBlur}>
+            {/* Icon đặt tuyệt đối bên trái */}
+            <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 
+                    ${isFocused ? 'text-primary scale-110' : 'text-muted-foreground'} ${isTyping ? 'animate-pulse' : ''}`} size={18} />
+            
+            <SelectValue placeholder="Tuổi của bạn..." />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="under 23">Dưới 23 tuổi</SelectItem>
+            <SelectItem value="23 to 30">23-30 tuổi</SelectItem>
+            <SelectItem value="upper 30">Trên 30 tuổi</SelectItem>
+          </SelectContent>
+        </Select>
+        <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${
+          isTyping ? 'w-full opacity-100' : 'w-0 opacity-0'
+        }`}></div>
+      </div>
     </div>
   );
 };
