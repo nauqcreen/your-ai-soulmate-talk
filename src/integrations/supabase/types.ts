@@ -16,6 +16,8 @@ export type Database = {
     Tables: {
       email_subscribers: {
         Row: {
+          address: string | null
+          age: string | null
           email: string
           id: string
           source: string | null
@@ -23,6 +25,8 @@ export type Database = {
           subscribed_at: string
         }
         Insert: {
+          address?: string | null
+          age?: string | null
           email: string
           id?: string
           source?: string | null
@@ -30,6 +34,8 @@ export type Database = {
           subscribed_at?: string
         }
         Update: {
+          address?: string | null
+          age?: string | null
           email?: string
           id?: string
           source?: string | null
