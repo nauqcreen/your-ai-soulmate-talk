@@ -57,8 +57,25 @@ export const useMultiStepForm = () => {
     e.preventDefault();
     if (isLoading) return;
 
-    // Tạm thời chỉ cần email, bỏ qua age và address steps
     if (step === "email" && isValidEmail) {
+      setIsLoading(true);
+      setTimeout(() => {
+        setStep("age");
+        setIsLoading(false);
+      }, 500);
+      return;
+    }
+
+    if (step === "age" && isValidAge) {
+      setIsLoading(true);
+      setTimeout(() => {
+        setStep("address");
+        setIsLoading(false);
+      }, 500);
+      return;
+    }
+
+    if (step === "address" && isFormValid) {
       setIsLoading(true);
 
       try {
@@ -67,8 +84,8 @@ export const useMultiStepForm = () => {
           .insert([
             {
               email: email.toLowerCase().trim(),
-              // age: parseInt(age, 10), // Tạm thời comment out
-              // address: address.trim(), // Tạm thời comment out
+              // age: parseInt(age, 10),
+              // address: address.trim(),
               source: "empowerment-section",
             },
           ]);
@@ -97,59 +114,7 @@ export const useMultiStepForm = () => {
       } finally {
         setIsLoading(false);
       }
-      return;
     }
-
-    // Tạm thời comment out age và address steps
-    // if (step === "age" && isValidAge) {
-    //   setIsLoading(true);
-    //   setTimeout(() => {
-    //     setStep("address");
-    //     setIsLoading(false);
-    //   }, 500);
-    //   return;
-    // }
-
-    // if (step === "address" && isFormValid) {
-    //   setIsLoading(true);
-
-    //   try {
-    //     const { error } = await supabase
-    //       .from("email_subscribers")
-    //       .insert([
-    //         {
-    //           email: email.toLowerCase().trim(),
-    //           age: parseInt(age, 10),
-    //           address: address.trim(),
-    //           source: "empowerment-section",
-    //         },
-    //       ]);
-
-    //     if (error) {
-    //       if (error.code === "23505") {
-    //         toast({
-    //           title: "Chúng tôi đã ghi nhận email này",
-    //           description: "Bạn sẽ nhận được thông tin ngay khi Tinktalk ra mắt.",
-    //           variant: "default"
-    //         });
-    //       } else throw error;
-    //     } else {
-    //       setStep("submitted");
-    //       toast({
-    //         title: "Chào mừng bạn đến với cộng đồng Tinktalk",
-    //         description: "Chúng tôi sẽ gửi thông tin độc quyền cho bạn sớm nhất.",
-    //       });
-    //     }
-    //   } catch (err) {
-    //     toast({
-    //       title: "Không thể hoàn tất đăng ký",
-    //       description: "Xin lỗi vì sự bất tiện. Vui lòng thử lại sau ít phút.",
-    //       variant: "destructive",
-    //     });
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    // }
   };
 
   useEffect(() => {
