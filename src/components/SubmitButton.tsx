@@ -13,7 +13,7 @@ const SubmitButton = ({ isFormValid, isLoading, isFinalStep }: SubmitButtonProps
 
   const buttonText = isLoading
     ? "Đang xử lý..."
-    : (isFinalStep ? "Nhận thông tin dự án" : "Nhận thông tin dự án");
+    : (isFinalStep ? "Nhận thông tin dự án" : "Tiếp tục");
 
   return (
     <div className="relative group">
