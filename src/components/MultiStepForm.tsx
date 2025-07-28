@@ -4,6 +4,7 @@ import AgeInput from "./AgeInput";
 import AddressInput from "./AddressInput";
 import SubmitButton from "./SubmitButton";
 import FormStatusMessage from "./FormStatusMessage";
+import SuccessMessage from "./SuccessMessage";
 
 const MultiStepForm = () => {
   const {
@@ -92,9 +93,7 @@ const MultiStepForm = () => {
       )}
 
       {step === "submitted" && (
-        <p className="text-center text-green-600 mt-6 font-medium">
-          ✅ Cảm ơn bạn đã đăng ký!
-        </p>
+        <SuccessMessage />
       )}
       </div>
     </form>
