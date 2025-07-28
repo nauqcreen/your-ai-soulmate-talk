@@ -1,1 +1,4 @@
 project_id = "arkudplubizhptsnebbe"
+
+[functions.send-periodic-email]
+verify_jwt = false
