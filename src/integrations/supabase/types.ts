@@ -92,7 +92,7 @@ export type Database = {
           session_id: string | null
           timestamp: string
           user_agent: string | null
-          user_id: string
+          user_id: string | null
         }
         Insert: {
           event_name: string
@@ -103,7 +103,7 @@ export type Database = {
           session_id?: string | null
           timestamp?: string
           user_agent?: string | null
-          user_id: string
+          user_id?: string | null
         }
         Update: {
           event_name?: string
@@ -114,7 +114,7 @@ export type Database = {
           session_id?: string | null
           timestamp?: string
           user_agent?: string | null
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: []
       }
