@@ -12,23 +12,50 @@ import FloatingElements from "../components/FloatingElements";
 import AnimatedBackground from "../components/AnimatedBackground";
 import ParticleField from "../components/ParticleField";
 import MorphingShape from "../components/MorphingShape";
+import { ScrollAnalytics } from "../components/ScrollAnalytics";
+import { AnalyticsTracker } from "../components/AnalyticsTracker";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      <ScrollAnalytics />
       <ParticleField />
       <AnimatedBackground />
       <MorphingShape />
       <FloatingElements count={15} />
       <ScrollProgress />
-      <Navigation />
-      <Hero />
-      <TheGap />
-      <TheArena />
-      <TheMethod />
-      <SupportingEcosystem />
-      <TheEmpowerment />
-      <MinimalFooter />
+      
+      <AnalyticsTracker element="navigation" trackClicks={true}>
+        <Navigation />
+      </AnalyticsTracker>
+      
+      <AnalyticsTracker element="hero_section" trackScroll={true}>
+        <Hero />
+      </AnalyticsTracker>
+      
+      <AnalyticsTracker element="gap_section" trackScroll={true}>
+        <TheGap />
+      </AnalyticsTracker>
+      
+      <AnalyticsTracker element="arena_section" trackScroll={true}>
+        <TheArena />
+      </AnalyticsTracker>
+      
+      <AnalyticsTracker element="method_section" trackScroll={true}>
+        <TheMethod />
+      </AnalyticsTracker>
+      
+      <AnalyticsTracker element="ecosystem_section" trackScroll={true} trackClicks={true}>
+        <SupportingEcosystem />
+      </AnalyticsTracker>
+      
+      <AnalyticsTracker element="empowerment_section" trackClicks={true} trackHover={true}>
+        <TheEmpowerment />
+      </AnalyticsTracker>
+      
+      <AnalyticsTracker element="footer" trackClicks={true}>
+        <MinimalFooter />
+      </AnalyticsTracker>
     </div>
   );
 };

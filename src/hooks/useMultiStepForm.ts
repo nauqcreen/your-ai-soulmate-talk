@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 type Step = "email" | "age" | "address" | "submitted";
 
@@ -14,6 +15,7 @@ export const useMultiStepForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const typingTimer = useRef<NodeJS.Timeout>();
   const { toast } = useToast();
+  const { trackFormEvent } = useAnalytics();
 
   const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isValidAge = ["under 23", "23 to 30", "upper 30"].includes(age);
@@ -24,6 +26,11 @@ export const useMultiStepForm = () => {
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     resetTyping();
+    
+    // Track form start when user first types
+    if (e.target.value.length === 1) {
+      trackFormEvent('email_subscription', 'start');
+    }
   };
 
   const handleAgeChange = (value: string) => {
@@ -83,12 +90,14 @@ export const useMultiStepForm = () => {
           } else throw error;
         } else {
           setStep("submitted");
+          trackFormEvent('email_subscription', 'submit', { email: email.toLowerCase().trim() });
           toast({
             title: "Chào mừng bạn đến với cộng đồng Tinktalk",
             description: "Chúng tôi sẽ gửi thông tin độc quyền cho bạn sớm nhất.",
           });
         }
       } catch (err) {
+        trackFormEvent('email_subscription', 'error', { error: String(err) });
         toast({
           title: "Không thể hoàn tất đăng ký",
           description: "Xin lỗi vì sự bất tiện. Vui lòng thử lại sau ít phút.",
