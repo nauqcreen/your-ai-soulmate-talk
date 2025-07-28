@@ -46,9 +46,9 @@ const AgeInput = ({
             
             <SelectValue placeholder="Tuổi của bạn..." />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="z-50 bg-background border border-border shadow-lg">
             <SelectItem value="under 23">Dưới 23 tuổi</SelectItem>
-            <SelectItem value="23 to 30">23-30 tuổi</SelectItem>
+            <SelectItem value="23 to 30">23 - 30 tuổi</SelectItem>
             <SelectItem value="upper 30">Trên 30 tuổi</SelectItem>
           </SelectContent>
         </Select>

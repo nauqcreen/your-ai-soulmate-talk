@@ -27,16 +27,16 @@ const AddressInput = ({
 }: AddressInputProps) => {
   const [showOtherInput, setShowOtherInput] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const handleSelectChange = (value: string ) => {
+  const handleSelectChange = (value: string) => {
     requestAnimationFrame(() => {
-    if (value === "others") {
-      setShowOtherInput(true)
-    } else {
-      setShowOtherInput(false)
-    }
-
-    onAddressChange(value)
-  })
+      if (value === "others") {
+        setShowOtherInput(true);
+        onAddressChange(""); // Clear the address when showing "others" input
+      } else {
+        setShowOtherInput(false);
+        onAddressChange(value);
+      }
+    });
   };
 
   return (
@@ -55,9 +55,9 @@ const AddressInput = ({
             
             <SelectValue placeholder="Chọn địa chỉ" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="z-50 bg-background border border-border shadow-lg">
             <SelectItem value="hanoi">Hà Nội</SelectItem>
-            <SelectItem value="others">Khác...</SelectItem>
+            <SelectItem value="others">Khác</SelectItem>
           </SelectContent>
         </Select>
       </div>
