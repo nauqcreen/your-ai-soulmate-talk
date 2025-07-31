@@ -1,16 +1,18 @@
 
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import ParallaxSection from './ParallaxSection';
 import FloatingElements from './FloatingElements';
 import AnimatedBackground from './AnimatedBackground';
 
 const Hero = () => {
+  const { t } = useLanguage();
   const [showScrollHint, setShowScrollHint] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLElement>(null);
-  const mainTitle = "Ý tưởng của bạn thực sự trị giá bao nhiêu?";
-  const subtitle = "Khi được trình bày một cách thuyết phục";
+  const mainTitle = t('hero.title');
+  const subtitle = t('hero.subtitle');
 
   useEffect(() => {
     const timer = setTimeout(() => {

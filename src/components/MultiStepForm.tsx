@@ -1,4 +1,5 @@
 import { useMultiStepForm } from "@/hooks/useMultiStepForm";
+import { useLanguage } from "@/contexts/LanguageContext";
 import EmailInput from "./EmailInput";
 import AgeInput from "./AgeInput";
 import AddressInput from "./AddressInput";
@@ -7,6 +8,7 @@ import FormStatusMessage from "./FormStatusMessage";
 import SuccessMessage from "./SuccessMessage";
 
 const MultiStepForm = () => {
+  const { t } = useLanguage();
   const {
     step,
     email,
@@ -41,7 +43,7 @@ const MultiStepForm = () => {
   return (
     <>
     <h3 className="text-2xl font-crimson font-semibold text-foreground mb-4">
-        Đăng ký nhận thông tin sớm, truy cập sớm, và nhận báo cáo năng lực đầu tiên
+        {t('form.title')}
       </h3>
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6">
       <div className="flex flex-col sm:flex-row gap-4">
@@ -98,7 +100,7 @@ const MultiStepForm = () => {
       </div>
     </form>
     <p className="text-sm text-muted-foreground mt-6 max-w-2xl mx-auto leading-relaxed font-source">
-        Báo cáo được AI phân tích dựa trên 1 bài tập ngắn do bạn thực hiện, giúp hiểu rõ điểm mạnh và tiềm năng cải thiện
+        {t('form.reportNote')}
       </p>
       </>
   );

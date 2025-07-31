@@ -1,6 +1,7 @@
 
 import { useRef, useState } from "react";
 import { Input } from "./ui/input";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Check, MapPin } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
@@ -25,6 +26,7 @@ const AddressInput = ({
   onFocus,
   onBlur
 }: AddressInputProps) => {
+  const { t } = useLanguage();
   const [showOtherInput, setShowOtherInput] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const handleSelectChange = (value: string) => {
@@ -53,11 +55,11 @@ const AddressInput = ({
             <MapPin className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 
                     ${isFocused ? 'text-primary scale-110' : 'text-muted-foreground'}`} size={18} />
             
-            <SelectValue placeholder="Chọn địa chỉ" />
+            <SelectValue placeholder={t('form.address.placeholder')} />
           </SelectTrigger>
           <SelectContent className="z-50 bg-background border border-border shadow-lg">
-            <SelectItem value="hanoi">Hà Nội</SelectItem>
-            <SelectItem value="others">Khác</SelectItem>
+            <SelectItem value="hanoi">{t('form.address.hanoi')}</SelectItem>
+            <SelectItem value="others">{t('form.address.other')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -71,7 +73,7 @@ const AddressInput = ({
           <Input
             ref={inputRef}
             type="text"
-            placeholder="Nhập địa chỉ của bạn..."
+            placeholder={t('form.address.otherInput')}
             value={address}
             onChange={onAddressChange}
             onFocus={onFocus}

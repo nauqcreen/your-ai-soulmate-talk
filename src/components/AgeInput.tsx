@@ -1,6 +1,7 @@
 
 import { useRef } from "react";
 import { Input } from "@/components/ui/input";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { User, Check } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
@@ -25,6 +26,7 @@ const AgeInput = ({
   onFocus,
   onBlur
 }: AgeInputProps) => {
+  const { t } = useLanguage();
   const handleSelectChange = (value: string) => {
     onAgeChange(value);
   };
@@ -44,12 +46,12 @@ const AgeInput = ({
             <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 transition-all duration-300 
                     ${isFocused ? 'text-primary scale-110' : 'text-muted-foreground'} ${isTyping ? 'animate-pulse' : ''}`} size={18} />
             
-            <SelectValue placeholder="Tuổi của bạn..." />
+            <SelectValue placeholder={t('form.age.placeholder')} />
           </SelectTrigger>
           <SelectContent className="z-50 bg-background border border-border shadow-lg">
-            <SelectItem value="under 23">Dưới 23 tuổi</SelectItem>
-            <SelectItem value="23 to 30">23 - 30 tuổi</SelectItem>
-            <SelectItem value="upper 30">Trên 30 tuổi</SelectItem>
+            <SelectItem value="under 23">{t('form.age.under23')}</SelectItem>
+            <SelectItem value="23 to 30">{t('form.age.23to30')}</SelectItem>
+            <SelectItem value="upper 30">{t('form.age.over30')}</SelectItem>
           </SelectContent>
         </Select>
         <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 ${
