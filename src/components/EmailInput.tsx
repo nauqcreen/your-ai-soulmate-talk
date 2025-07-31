@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { Input } from "@/components/ui/input";
-import { useLanguage } from "@/contexts/LanguageContext";
 import { Mail, Check } from "lucide-react";
 
 interface EmailInputProps {
@@ -24,7 +23,6 @@ const EmailInput = ({
   onFocus,
   onBlur
 }: EmailInputProps) => {
-  const { t } = useLanguage();
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -37,7 +35,7 @@ const EmailInput = ({
         <Input
           ref={inputRef}
           type="email"
-          placeholder={t('form.email.placeholder')}
+          placeholder="Nhập email của bạn..."
           value={email}
           onChange={onEmailChange}
           onFocus={onFocus}

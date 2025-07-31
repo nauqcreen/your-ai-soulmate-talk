@@ -1,9 +1,7 @@
 
 import { Check, Sparkles, Heart } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const SuccessMessage = () => {
-  const { t } = useLanguage();
   return (
     <div className="text-center py-12 animate-fade-in">
       {/* Success Icon */}
@@ -19,7 +17,7 @@ const SuccessMessage = () => {
 
       {/* Main Message */}
       <h3 className="text-3xl md:text-4xl font-crimson font-bold text-foreground mb-4 leading-tight">
-        {t('success.welcome')}{" "}
+        Chào mừng bạn đến với{" "}
         <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           Tinktalk
         </span>
@@ -27,25 +25,25 @@ const SuccessMessage = () => {
       
       {/* Subtitle */}
       <p className="text-xl text-muted-foreground mb-6 max-w-2xl mx-auto leading-relaxed font-source">
-        {t('success.thanks')}
+        Cảm ơn bạn đã tin tưởng và đồng hành cùng chúng tôi trong hành trình này!
       </p>
 
       {/* Promise Card */}
       <div className="bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 border border-primary/20 rounded-2xl p-6 max-w-md mx-auto mb-6 backdrop-blur-sm">
         <Heart className="text-red-500 w-6 h-6 mx-auto mb-3 animate-pulse" />
         <p className="text-foreground font-medium mb-2 font-source">
-          {t('success.promise')}
+          Chúng tôi sẽ gửi cho bạn:
         </p>
         <ul className="text-sm text-muted-foreground space-y-1 font-source">
-          <li>{t('success.item1')}</li>
-          <li>{t('success.item2')}</li>
-          <li>{t('success.item3')}</li>
+          <li>• Thông tin độc quyền về sản phẩm</li>
+          <li>• Quyền truy cập sớm khi ra mắt</li>
+          <li>• Báo cáo năng lực cá nhân đầu tiên</li>
         </ul>
       </div>
 
       {/* Bottom Note */}
       <p className="text-sm text-muted-foreground font-source italic">
-        {t('success.note')}
+        Hãy theo dõi email của bạn để không bỏ lỡ tin tức mới nhất nhé! ✨
       </p>
     </div>
   );

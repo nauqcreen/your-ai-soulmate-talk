@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 import MagneticButton from './MagneticButton';
 
 interface SubmitButtonProps {
@@ -10,12 +9,11 @@ interface SubmitButtonProps {
 }
 
 const SubmitButton = ({ isFormValid, isLoading, isFinalStep }: SubmitButtonProps) => {
-  const { t } = useLanguage();
   const [buttonHovered, setButtonHovered] = useState(false);
 
   const buttonText = isLoading
     ? "Đang xử lý..."
-    : (isFinalStep ? t('form.button.submit') : t('form.button.next'));
+    : (isFinalStep ? "Nhận thông tin dự án" : "Tiếp tục");
 
   return (
     <div className="relative group">
