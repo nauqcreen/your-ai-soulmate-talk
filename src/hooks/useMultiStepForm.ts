@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { sanitizeEmail, sanitizeAge, sanitizeAddress, formRateLimiter } from "@/utils/security";
 
 type Step = "email" | "age" | "address" | "submitted";
 
@@ -24,17 +25,19 @@ export const useMultiStepForm = () => {
   const isFormValid = isValidEmail && isValidAge && isValidAddress;
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+    const sanitizedValue = sanitizeEmail(e.target.value);
+    setEmail(sanitizedValue);
     resetTyping();
     
     // Track form start when user first types
-    if (e.target.value.length === 1) {
+    if (sanitizedValue.length === 1) {
       trackFormEvent('email_subscription', 'start');
     }
   };
 
   const handleAgeChange = (value: string) => {
-    setAge(value);
+    const sanitizedAge = sanitizeAge(value);
+    setAge(sanitizedAge);
   };
 
   const handleAddressChange = (
@@ -45,12 +48,13 @@ export const useMultiStepForm = () => {
       if (e === "others") {
         setAddress(""); // Show input text field, bắt đầu với rỗng
       } else {
-        setAddress(e); // Chọn địa chỉ cố định (VD: "hanoi")
+        const sanitizedAddress = sanitizeAddress(e);
+        setAddress(sanitizedAddress); // Chọn địa chỉ cố định (VD: "hanoi")
       }
     } else {
       // Trường hợp người dùng gõ tay trong input
-      const value = e.target.value;
-      setAddress(value);
+      const sanitizedValue = sanitizeAddress(e.target.value);
+      setAddress(sanitizedValue);
     }
   };
 
@@ -63,6 +67,17 @@ export const useMultiStepForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isLoading) return;
+
+    // Rate limiting check
+    const userIdentifier = `${window.location.hostname}_${email || 'anonymous'}`;
+    if (!formRateLimiter.isAllowed(userIdentifier)) {
+      toast({
+        title: "Quá nhiều yêu cầu",
+        description: `Vui lòng đợi trước khi thử lại. Còn lại ${formRateLimiter.getRemainingAttempts(userIdentifier)} lần thử.`,
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (step === "email" && isValidEmail) {
       setIsLoading(true);

@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import Hero from "../components/Hero";
 import TheGap from "../components/TheGap";
 import TheArena from "../components/TheArena";
@@ -14,11 +15,19 @@ import ParticleField from "../components/ParticleField";
 import MorphingShape from "../components/MorphingShape";
 import { ScrollAnalytics } from "../components/ScrollAnalytics";
 import { AnalyticsTracker } from "../components/AnalyticsTracker";
+import { ConsentBanner } from "../components/ConsentBanner";
+import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
+  const [consentGiven, setConsentGiven] = useState(false);
+
+  const handleConsentChange = (preferences: any) => {
+    setConsentGiven(preferences.analytics || preferences.interactions || preferences.performance);
+  };
+
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      <ScrollAnalytics />
+      {consentGiven && <ScrollAnalytics />}
       <ParticleField />
       <AnimatedBackground />
       <MorphingShape />
@@ -56,6 +65,9 @@ const Index = () => {
       <AnalyticsTracker element="footer" trackClicks={true}>
         <MinimalFooter />
       </AnalyticsTracker>
+      
+      <ConsentBanner onConsentChange={handleConsentChange} />
+      <Toaster />
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { generateSecureSessionId, hashSensitiveData } from '@/utils/security';
+import { getConsentPreferences } from '@/components/ConsentBanner';
 
 interface AnalyticsEvent {
   event_type: string;
@@ -18,16 +20,19 @@ export const useAnalytics = () => {
 
   // Generate session ID
   useEffect(() => {
-    sessionId.current = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    sessionId.current = generateSecureSessionId();
     sessionStartTime.current = Date.now();
     pageStartTime.current = performance.now();
 
-    // Track page view
-    trackEvent('page_view', 'landing_page', {
-      url: window.location.href,
-      referrer: document.referrer || 'direct',
-      timestamp: Date.now()
-    });
+    // Track page view only if consent given
+    const consent = getConsentPreferences();
+    if (consent?.analytics || consent?.performance) {
+      trackEvent('page_view', 'landing_page', {
+        url: window.location.href,
+        referrer: document.referrer || 'direct',
+        timestamp: Date.now()
+      });
+    }
 
     // Track session end on page unload
     const handleBeforeUnload = () => {
@@ -44,19 +49,39 @@ export const useAnalytics = () => {
 
   const trackEvent = useCallback(async (eventType: string, eventName: string, properties?: Record<string, any>) => {
     try {
+      // Check consent before tracking
+      const consent = getConsentPreferences();
+      if (!consent) return;
+
+      // Check if this type of tracking is allowed
+      const shouldTrack = 
+        (eventType === 'page_view' && consent.performance) ||
+        (eventType === 'scroll' && consent.analytics) ||
+        (eventType === 'click' && consent.interactions) ||
+        (eventType === 'interaction' && consent.interactions) ||
+        (eventType === 'form' && consent.analytics);
+
+      if (!shouldTrack) return;
+
+      // Hash sensitive data in properties
+      const sanitizedProperties = await sanitizeAnalyticsProperties(properties || {});
+
       const eventData: AnalyticsEvent = {
         event_type: eventType,
         event_name: eventName,
-        properties: properties || {},
+        properties: sanitizedProperties,
         session_id: sessionId.current,
-        user_agent: navigator.userAgent
+        user_agent: await hashSensitiveData(navigator.userAgent) // Hash user agent for privacy
       };
+
+      // Generate truly anonymous user ID using session hash
+      const anonymousUserId = await hashSensitiveData(sessionId.current || '');
 
       const { error } = await (supabase as any)
         .from('analytics_events')
         .insert([{
           ...eventData,
-          user_id: crypto.randomUUID(), // Generate anonymous user ID
+          user_id: anonymousUserId,
           ip_address: null // Will be handled by RLS/triggers if needed
         }]);
 
@@ -67,6 +92,25 @@ export const useAnalytics = () => {
       console.error('Failed to track event:', err);
     }
   }, []);
+
+  const sanitizeAnalyticsProperties = async (properties: Record<string, any>) => {
+    const sanitized: Record<string, any> = {};
+    
+    for (const [key, value] of Object.entries(properties)) {
+      if (typeof value === 'string') {
+        // Hash potentially sensitive data like URLs and emails
+        if (key.includes('url') || key.includes('email') || key.includes('referrer')) {
+          sanitized[key] = await hashSensitiveData(value);
+        } else {
+          sanitized[key] = value;
+        }
+      } else {
+        sanitized[key] = value;
+      }
+    }
+    
+    return sanitized;
+  };
 
   const trackClick = useCallback((element: string, targetUrl?: string) => {
     trackEvent('click', element, {
